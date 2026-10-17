@@ -15,22 +15,24 @@
 
 ---
 
-## 🤖 Agents & Their Inspirations
-| Agent | Role | Key Inspirations |
-|-------|------|-------------------|
-| **Director** | Visionary leader coordinating the whole pipeline. | Classic film directors, chief creative officers. |
-| **Strategist** | Designs data‑driven campaigns. | Top ad agencies (Wieden+Kennedy, BBDO). |
-| **AudienceResearcher** | Extracts insights, trends and personas. | Nielsen, Gartner research teams. |
-| **Writer** | Crafts persuasive copy, scripts, headlines. | Award‑winning copywriters, content studios. |
-| **VisualProducer** | Generates graphics, layouts, motion assets. | Pixar visual development, design studios. |
-| **QualityEditor** | Reviews and polishes deliverables. | Pulitzer‑level editors, QA squads. |
-| **SocialManager** | Publishes, schedules, runs ads on platforms. | Social ops at leading brands. |
-| **CommunityManager** | Engages audience, answers comments, builds loyalty. | Community leads at Twitch, Reddit. |
-| **GrowthAnalyst** | Tracks growth metrics, runs experiments, suggests pivots. | Growth hackers, analytics teams (Amplitude, Mixpanel). |
-| **ImageReferenceAgent** | Finds high‑quality reference images. | Mood‑board curators on Behance & Pinterest. |
-| **VideoMemeAgent** | Crawls trending meme videos and downloads them. | BuzzFeed viral teams, TikTok Trend Labs. |
-| **TikTokAgent** | Pulls TikTok metrics, replies to comments, schedules posts. | TikTok creator studios, influencer agencies. |
-| **InstagramAgent** | Retrieves Instagram insights, replies to comments, schedules posts. | Instagram brand teams, social‑media experts. |
+## 🤖 Agents, Specialties & Inspirations
+
+| Agent | Specialty | Inspirations |
+|-------|-----------|--------------|
+| **Director** | Oversees pipeline, defines vision, ensures quality | Classic film directors, chief creative officers |
+| **Strategist** | Crafts data‑driven campaign strategies | Top ad agencies (Wieden+Kennedy, BBDO) |
+| **AudienceResearcher** | Analyzes trends, personas, market data | Nielsen, Gartner research teams |
+| **Writer** | Generates copy, scripts, headlines | Award‑winning copywriters, content studios |
+| **VisualProducer** | Designs graphics, layouts, motion assets | Pixar visual development, design studios |
+| **QualityEditor** | Reviews and polishes deliverables | Pulitzer‑level editors, QA squads |
+| **SocialManager** | Publishes, schedules, runs ads on platforms | Social ops at leading brands |
+| **CommunityManager** | Engages audience, answers comments, builds loyalty | Community leads at Twitch, Reddit |
+| **GrowthAnalyst** | Tracks metrics, runs experiments, suggests pivots | Growth hackers, analytics teams (Amplitude, Mixpanel) |
+| **ImageReferenceAgent** | Finds high‑quality reference images, validates metadata | Mood‑board curators on Behance & Pinterest |
+| **VideoMemeAgent** | Crawls trending meme videos, validates metadata | BuzzFeed viral teams, TikTok Trend Labs |
+| **TikTokAgent** | Pulls TikTok metrics, replies to comments, schedules posts | TikTok creator studios, influencer agencies |
+| **InstagramAgent** | Retrieves Instagram insights, replies to comments, schedules posts | Instagram brand teams, social‑media experts |
+ |
 
 ---
 
