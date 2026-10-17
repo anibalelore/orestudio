@@ -1,0 +1,2 @@
+# Requirements for ore-studio skill
+pyyaml
