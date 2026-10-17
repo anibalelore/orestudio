@@ -24,6 +24,14 @@ Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú pones el obj
 
 ---
 
+## 🧠 El cerebro principal: Sabrina Ramonov
+
+Detrás de los 9 agentes hay un **criterio compartido** inspirado en el enfoque público de **[Sabrina Ramonov](https://www.sabrina.dev)**: contenido con IA práctico, automatizado y orientado a resultados. Ese núcleo guía a todo el equipo, y cada agente suma su propia especialidad encima.
+
+> ORE Studio se inspira en su enfoque público documentado. No es un producto oficial de Sabrina Ramonov ni se le atribuyen decisiones privadas.
+
+---
+
 ## 🤖 Conoce a tu equipo
 
 Cada agente es un experto con una misión clara, inspirado en los mejores equipos de la industria.
