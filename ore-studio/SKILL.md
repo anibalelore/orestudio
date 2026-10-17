@@ -18,6 +18,7 @@ Esta skill actúa como una **agencia virtual** que coordina nueve roles especial
 2. Cada **rol** consume su módulo (`agents/<role>.py`) y produce un artefacto observable.
 3. **Growth Analyst** genera métricas y un **checkpoint**.
 4. La skill devuelve la ruta del directorio `output/<project_id>/` con:
+   - Cada artefacto incluye un encabezado que indica el agente que lo generó, e.g., `**[Agent: Director]**`.
     - `brief.md`
     - `artifacts/` (uno por rol)
     - `checkpoint.md`
@@ -46,7 +47,8 @@ output/<project_id>/
 │  ├─ quality-editor.md
 │  ├─ social-manager.md
 │  ├─ community-manager.md
-│  └─ growth-analyst.md
+│  ├─ image-reference-agent.md
+│  ├─ video-meme-agent.md
 ├─ checkpoint.md
 └─ log.txt
 ```
