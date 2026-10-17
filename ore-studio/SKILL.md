@@ -1,65 +1,70 @@
 ---
 name: ore-studio
-version: 0.1.0
-description: Agencia virtual de contenido, marketing y crecimiento.
-author: Aníbal
+description: Agencia virtual de contenido, marketing y crecimiento con entrevista inicial, estudio por red social y agentes conectados.
 ---
 
 # ore-studio Skill Router
 
-Esta skill actúa como una **agencia virtual** que coordina nueve roles especializados para generar campañas multicanal (TikTok, YouTube, LinkedIn, Instagram, opcional Facebook).
+Agencia virtual de **16 agentes con personalidad propia**, inspirados en referentes reales de cada área, que generan campañas multicanal (TikTok, Instagram, LinkedIn, YouTube, opcional Facebook). Criterio compartido inspirado en el enfoque público de **Sabrina Ramonov**.
+
+La fuente de verdad de personalidades, inspiraciones y conexiones es `agents/personas.py`.
 
 ## Activación
-- **Sin parámetros**: inicia un nuevo proyecto con un `project_id` generado automáticamente.
+- **Sin parámetros**: inicia un proyecto nuevo con la entrevista del **Interviewer**.
 - **Con `--project <ID>`**: carga el contexto de un proyecto existente.
 
-## Flujo básico
-1. **Director** solicita objetivo, comprador y oferta.
-2. Cada **rol** consume su módulo (`agents/<role>.py`) y produce un artefacto observable.
-3. **Growth Analyst** genera métricas y un **checkpoint**.
-4. La skill devuelve la ruta del directorio `output/<project_id>/` con:
-   - Cada artefacto incluye un encabezado que indica el agente que lo generó, e.g., `**[Agent: Director]**`.
-    - `brief.md`
-    - `artifacts/` (uno por rol)
-    - `checkpoint.md`
-    - `log.txt`
+## Flujo (todo conectado por un contexto compartido)
+1. **Interviewer** — entrevista breve. **Máximo 5 preguntas en total, incluida la apertura**, cada una con una opción recomendada ("ok" la acepta). Lo que falta se asume y se marca. Entrega un `brief.md`, guarda `client-profile.json` para futuras campañas y pide un solo "sí".
+2. **Director** — valida el brief, reparte encargos y define qué es "terminado".
+3. **Strategist** y **Audience Researcher** — idea central, pilares, KPI, dolores y lenguaje del comprador.
+4. **Estudio por red** — cada Platform Strategist (TikTok, Instagram, LinkedIn, YouTube, Facebook) produce su `platform-study-<red>.md` con comportamiento de la audiencia, formato, ganchos, estructura, reglas, CTA, cadencia y métricas.
+5. **Writer** — escribe **un guion por red solo después de su estudio**. Si falta el estudio, no escribe.
+6. **Media Scout** — busca imágenes, videos y memes relacionados con el tema, con licencia registrada.
+7. **Visual Producer** — convierte cada guion en composiciones (estilo Remotion) con duración y resolución exactas.
+8. **Quality Editor** — revisa cada pieza contra las reglas de su red.
+9. **Social Manager** → **Community Manager** → **Growth Analyst** — calendario, respuestas y métricas.
+10. **Growth Analyst** devuelve aprendizajes al **Strategist** y al **Writer** (ciclo de mejora).
+
+Cada artefacto lleva un encabezado con el agente y sus inspiraciones, y una línea con su voz. El `checkpoint.md` lista quién entregó qué a quién.
+
+## Cómo ejecutar
+```bash
+python ore-studio/scripts/run_agency.py --project demo                 # con entrevista
+python ore-studio/scripts/run_agency.py --project demo --yes \
+    --offer "Cursos de Excel" --buyer "contadores" --channel tiktok,linkedin
+python ore-studio/scripts/run_agency.py --project siguiente --yes \
+    --profile output/demo/client-profile.json --channel instagram,youtube
+```
+En código: `Interviewer().run()` → `Pipeline("demo").run(brief, fetch_media=False)`.
+
+## Reglas para el agente anfitrión (LLM)
+- Respeta el límite de preguntas del Interviewer; no hagas más rondas de preguntas.
+- Nunca escribas un guion sin leer antes el estudio de esa red.
+- Cada agente habla con su voz definida en `personas.py`; no suplantes a las personas inspiradoras ni les atribuyas decisiones privadas.
+- Las reglas por red son heurísticas: contrástalas con datos actuales y con las métricas del cliente.
+- El pipeline genera estructura y reglas; tú redactas el texto final siguiendo las líneas `➜ Escribe:`.
 
 ## Bloqueos críticos
-- Falta `project_id` → aborta y solicita.
-- ID de ficha duplicado o URL rota en el corpus → aborta y muestra error.
-- Intento de acción no soportada por la plataforma → marca como **pendiente**.
-
-## Parámetros de entrada (opcional)
-- `--project <ID>`: Identificador único del proyecto.
-- `--channel <list>`: Canales a activar (por defecto: TikTok,YouTube,LinkedIn,Instagram).
-- `--dry-run`: Solo valida la configuración.
+- Brief sin oferta o sin canales → aborta y solicita.
+- Writer sin estudio de la red → aborta.
+- Acción no soportada por la plataforma → marca como **pendiente**.
 
 ## Salida
 ```
 output/<project_id>/
 ├─ brief.md
+├─ client-profile.json          (contexto reutilizable de negocio y marca)
 ├─ artifacts/
-│  ├─ director.md
-│  ├─ marketing-strategist.md
-│  ├─ audience-researcher.md
-│  ├─ writer.md
-│  ├─ visual-producer.md
-│  ├─ quality-editor.md
-│  ├─ social-manager.md
-│  ├─ community-manager.md
-│  ├─ image-reference-agent.md
-│  ├─ video-meme-agent.md
+│  ├─ director.md, strategist.md, audience_researcher.md
+│  ├─ platform-study-<red>.md   (uno por red)
+│  ├─ writer.md, media_scout.md, visual_producer.md
+│  ├─ quality_editor.md, social_manager.md
+│  ├─ community_manager.md, growth_analyst.md
+├─ assets/                      (si fetch_media=True)
 ├─ checkpoint.md
 └─ log.txt
 ```
 
-## Instalación rápida
-```bash
-# Desde la raíz del workspace
-python -m pip install -r requirements.txt  # solo dependencias estándar
-python ore-studio/scripts/package_skill.py ore-studio dist/ore-studio-0.1.0.zip
-```
-
----
-
-*Esta skill incluye los módulos internos y los scripts de validación, búsqueda y empaquetado que se implementarán en siguientes pasos.*
+## Parámetros
+- `--project <ID>`, `--channel <lista>` (por defecto: tiktok,instagram,linkedin,youtube), `--output <dir>`, `--yes` (omite la entrevista).
+- `--profile <ruta>` reutiliza el contexto de negocio; `--brand <nombre>` lo define o reemplaza.

@@ -1,9 +1,9 @@
 # 🚀 ORE Studio — Tu agencia de marketing completa, en un solo comando
 
 > **De una idea a una campaña lista para publicar en minutos.**
-> Un equipo virtual de **9 especialistas con IA** que planea, escribe, diseña, revisa y optimiza tu contenido para **TikTok, YouTube, LinkedIn, Instagram** (y Facebook si lo quieres).
+> Un equipo virtual de **16 agentes con personalidad propia** que te entrevista, estudia cada red social, escribe, diseña, revisa y optimiza tu contenido para **TikTok, Instagram, LinkedIn, YouTube** (y Facebook si lo quieres).
 
-Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú pones el objetivo; tu agencia hace el resto.
+Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú cuentas qué quieres lograr; tu agencia hace el resto.
 
 ---
 
@@ -11,22 +11,25 @@ Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú pones el obj
 
 | Antes | Con ORE Studio |
 |-------|----------------|
-| Semanas coordinando estrategia, copy y diseño | Una campaña completa desde un solo objetivo |
-| Mensajes distintos en cada red | Una voz de marca consistente en todos los canales |
-| Contratar a 9 perfiles distintos | 9 especialistas virtuales trabajando en equipo |
-| Publicar "a ver qué pasa" | Decisiones guiadas por audiencia y métricas |
+| Semanas coordinando estrategia, copy y diseño | Una campaña completa desde una conversación corta |
+| Formularios y reuniones con preguntas interminables | Entrevista de **máximo 5 preguntas**, con respuesta sugerida |
+| El mismo guion pegado en todas las redes | **Un estudio por red social** antes de cada guion |
+| Equipos que no se hablan entre sí | Agentes **conectados**: cada uno sabe quién le entrega y a quién entrega |
+| Publicar "a ver qué pasa" | Decisiones guiadas por audiencia y métricas, con ciclo de mejora |
 
 **Lo que recibes en cada proyecto:**
-- 📋 Brief de campaña listo para aprobar
-- 📁 Entregables por rol (estrategia, copy, dirección visual, calendario…)
-- ✅ Checkpoints para validar cada etapa
-- 🧾 Bitácora completa de lo que se decidió y por qué
+- 📋 Brief validado, con los supuestos marcados para que los corrijas
+- 🔬 Un estudio por red (comportamiento, formato, ganchos, reglas, métricas)
+- 🎬 Guiones por red + composiciones de video
+- ✅ Revisión de calidad contra las reglas de cada plataforma
+- 📅 Calendario, guía de comunidad y plan de experimentos
+- 🧾 Checkpoint con quién entregó qué a quién
 
 ---
 
 ## 🧠 El cerebro principal: Sabrina Ramonov
 
-Detrás de los 9 agentes hay un **criterio compartido** inspirado en el enfoque público de **[Sabrina Ramonov](https://www.sabrina.dev)**: contenido con IA práctico, automatizado y orientado a resultados. Ese núcleo guía a todo el equipo, y cada agente suma su propia especialidad encima.
+Detrás de los agentes hay un **criterio compartido** inspirado en el enfoque público de **[Sabrina Ramonov](https://www.sabrina.dev)**: contenido con IA práctico, automatizado y orientado a resultados. Ese núcleo guía a todo el equipo, y cada agente suma su propia especialidad y personalidad encima.
 
 > ORE Studio se inspira en su enfoque público documentado. No es un producto oficial de Sabrina Ramonov ni se le atribuyen decisiones privadas.
 
@@ -34,24 +37,67 @@ Detrás de los 9 agentes hay un **criterio compartido** inspirado en el enfoque 
 
 ## 🤖 Conoce a tu equipo
 
-Cada agente es un experto con una misión clara, inspirado en los mejores equipos de la industria.
+Cada agente tiene **especialidad, personalidad y referentes reales** (su fuente de verdad es [`agents/personas.py`](ore-studio/agents/personas.py)).
 
-| # | Agente | Qué hace por ti | Inspirado en (personas) | Y también en |
-|---|--------|-----------------|--------------------------|--------------|
-| 1 | 🎬 **Director** | Lidera el equipo, define la visión y mantiene todo alineado | **Steve Jobs**, **Christopher Nolan**, **Lee Clow** | Directores creativos de agencias |
-| 2 | 🧭 **Strategist** | Diseña la estrategia, el posicionamiento, los mensajes y los KPIs | **David Ogilvy**, **Seth Godin**, **Philip Kotler** | Planners de Wieden+Kennedy y BBDO |
-| 3 | 🔍 **Audience Researcher** | Descubre quién es tu audiencia, qué quiere y qué está en tendencia | **Rand Fishkin**, **Byron Sharp**, **Clayton Christensen** (Jobs to be Done) | Equipos de Nielsen y Gartner |
-| 4 | ✍️ **Writer** | Escribe copys, guiones, titulares y CTAs que enganchan | **Eugene Schwartz**, **Joanna Wiebe**, **Ann Handley** | Copywriters publicitarios |
-| 5 | 🎨 **Visual Producer** | Crea motion graphics y piezas visuales, con video generado desde código | **[Remotion](https://www.remotion.dev)** | — |
-| 6 | 🛡️ **Quality Editor** | Revisa, pule y asegura coherencia de marca antes de publicar | **William Zinsser**, **Maxwell Perkins**, **Marty Neumeier** | Editores de redacción y equipos de QA |
-| 7 | 📅 **Social Manager** | Planea el calendario y adapta cada pieza a cada plataforma | **Gary Vaynerchuk**, **Mari Smith**, **Ann Handley** | Social media ops de marcas líderes |
-| 8 | 💬 **Community Manager** | Conversa con tu audiencia y construye comunidad fiel | **Kevin Kelly** (1,000 True Fans), **Jono Bacon**, **Pat Flynn** | Community leads de Twitch y Reddit |
-| 9 | 📈 **Growth Analyst** | Mide, experimenta (A/B) y te dice qué mejorar | **Neil Patel**, **Sean Ellis**, **Brian Balfour**, **Avinash Kaushik** | Equipos de Amplitude y Mixpanel |
+### Entrevista y dirección
+| Agente | Qué hace por ti | Personalidad | Inspirado en |
+|--------|-----------------|--------------|--------------|
+| 🎙️ **Interviewer** | Entiende qué buscas, tus objetivos y tu comprador **sin interrogatorios**: máx. 5 preguntas | Curioso y directo; una pregunta a la vez con opción recomendada | **Rob Fitzpatrick** (The Mom Test), **Michael Bungay Stanier**, **Simon Sinek**, **Bob Moesta** |
+| 🎬 **Director** | Lidera, define la visión y los criterios de "terminado" | Sereno y decidido | **Steve Jobs**, **Christopher Nolan**, **Lee Clow** |
+| 🧭 **Strategist** | Idea central, pilares y KPI | Claro y provocador | **David Ogilvy**, **Seth Godin**, **Philip Kotler** |
+| 🔍 **Audience Researcher** | Dolores, lenguaje real y mentalidad por red | Observador y empírico | **Rand Fishkin**, **Byron Sharp**, **Clayton Christensen** |
+
+### Especialistas por red social (cada uno hace su estudio antes de cualquier guion)
+| Agente | Qué estudia y entrega | Personalidad | Inspirado en |
+|--------|-----------------------|--------------|--------------|
+| 🎵 **TikTok Strategist** | Ganchos, retención y tendencias de video corto | Rápido, directo, sin relleno | **Brendan Kane**, **Alex Hormozi**, **Khaby Lame**, **MrBeast** |
+| 📸 **Instagram Strategist** | Reels, carruseles y Stories para envíos y guardados | Cuidado y visual | **Adam Mosseri**, **Sue B. Zimmerman**, **Jenna Kutcher** |
+| 💼 **LinkedIn Strategist** | Posts, carruseles y video con autoridad | Profesional pero humano | **Justin Welsh**, **Lara Acosta**, **Jasmin Alić** |
+| ▶️ **YouTube Strategist** | Shorts y video largo: título, miniatura, retención | Analítico y narrativo | **Paddy Galloway**, **MrBeast**, **Ali Abdaal**, **Sean Cannell** |
+| 👥 **Facebook Strategist** *(opcional)* | Reels, comunidades y conversación | Cercano y conversador | **Mari Smith** |
+
+### Producción y calidad
+| Agente | Qué hace por ti | Personalidad | Inspirado en |
+|--------|-----------------|--------------|--------------|
+| ✍️ **Writer** | Un guion por red, **solo después de su estudio** | Conciso, con ritmo | **Eugene Schwartz**, **Joanna Wiebe**, **Ann Handley** |
+| 🧲 **Media Scout** | Busca imágenes, videos y memes del tema, con licencia registrada | Metódico, cuidadoso con derechos | Curadores de moodboards y equipos de contenido viral |
+| 🎨 **Visual Producer** | Motion graphics y composiciones de video desde código | Preciso y técnico | **[Remotion](https://www.remotion.dev)** |
+| 🛡️ **Quality Editor** | Revisa cada pieza contra las reglas de su red | Exigente pero justo | **William Zinsser**, **Maxwell Perkins**, **Marty Neumeier** |
+
+### Publicación, comunidad y crecimiento
+| Agente | Qué hace por ti | Personalidad | Inspirado en |
+|--------|-----------------|--------------|--------------|
+| 📅 **Social Manager** | Calendario y adaptación por plataforma | Organizado y práctico | **Gary Vaynerchuk**, **Mari Smith**, **Ann Handley** |
+| 💬 **Community Manager** | Responde y construye comunidad fiel | Cálido y atento | **Kevin Kelly**, **Jono Bacon**, **Pat Flynn** |
+| 📈 **Growth Analyst** | Métricas, experimentos A/B y aprendizajes que vuelven a la estrategia | Escéptico y basado en datos | **Neil Patel**, **Sean Ellis**, **Brian Balfour**, **Avinash Kaushik** |
 
 > Son referentes de la industria que inspiran el enfoque de cada rol; no están afiliados ni respaldan ORE Studio.
 
+---
 
-> Cada rol está definido en `ore-studio/references/roles/` y su módulo en `ore-studio/agents/`.
+## 🔗 Todo conectado
+
+```mermaid
+flowchart LR
+  I[Interviewer] --> D[Director]
+  D --> S[Strategist]
+  D --> A[Audience Researcher]
+  S --> P["Estudio por red<br/>TikTok · Instagram · LinkedIn · YouTube"]
+  A --> P
+  P --> W[Writer]
+  W --> M[Media Scout]
+  M --> V[Visual Producer]
+  W --> Q[Quality Editor]
+  V --> Q
+  Q --> SM[Social Manager]
+  SM --> C[Community Manager]
+  C --> G[Growth Analyst]
+  SM --> G
+  G -. aprendizajes .-> S
+  G -. ganchos que funcionaron .-> W
+```
+
+El Writer **no escribe** para una red si su estudio no existe. El Growth Analyst devuelve lo aprendido al Strategist y al Writer.
 
 ---
 
@@ -62,26 +108,25 @@ Cada agente es un experto con una misión clara, inspirado en los mejores equipo
 git clone https://github.com/anibalelore/orestudio.git
 cd "ORE Studio"
 
-# 2. Instala la dependencia mínima
-python -m pip install -r ore-studio/requirements.txt
+# 2. Corre la agencia (te entrevista con máximo 5 preguntas)
+python ore-studio/scripts/run_agency.py --project mi-campana
 
-# 3. Valida que todo esté en orden
-python ore-studio/scripts/validate_skill.py
-
-# 4. (Opcional) Empaqueta la skill para compartirla
-python ore-studio/scripts/package_skill.py ore-studio dist/ore-studio-0.1.0.zip
+# …o sin entrevista, directo:
+python ore-studio/scripts/run_agency.py --project cafe --yes \
+  --offer "Café de especialidad por suscripción" \
+  --buyer "oficinistas" --channel tiktok,linkedin
 ```
 
-Después, dale a tu agencia un objetivo (por ejemplo: *"Lanzar mi nueva línea de café en TikTok e Instagram"*) y deja que el equipo trabaje.
+Los resultados quedan en `output/<proyecto>/`.
 
----
+Cada ejecución guarda `client-profile.json` con el contexto reutilizable de la marca. Para iniciar otra campaña sin repetir las preguntas sobre el negocio:
 
-## 🧰 Incluye
+```bash
+python ore-studio/scripts/run_agency.py --project nueva-campana --yes \
+  --profile output/mi-proyecto/client-profile.json --channel tiktok,linkedin
+```
 
-- **Flujo guiado por prompt**: del objetivo de alto nivel a un paquete de campaña completo.
-- **Script de validación** (`scripts/validate_skill.py`) para asegurar la integridad de `SKILL.md`.
-- **Buscador de corpus** (`scripts/search_corpus.py`) para consultar referencias rápidamente.
-- **Empaquetador** (`scripts/package_skill.py`) para distribuir tu skill en un zip.
+> Las reglas por red social son heurísticas de trabajo: contrástalas con datos actuales de cada plataforma y con tus propias métricas. El pipeline genera la estructura, los estudios y las revisiones; el texto final lo pule el agente anfitrión (LLM).
 
 ---
 
@@ -89,26 +134,22 @@ Después, dale a tu agencia un objetivo (por ejemplo: *"Lanzar mi nueva línea d
 
 ```
 ORE Studio/
-├─ ore‑studio/
-│  ├─ SKILL.md                # Definición / router de la skill
-│  ├─ agents/                 # Los nueve roles
-│  │   ├─ __init__.py
-│  │   ├─ director.py
-│  │   ├─ strategist.py
-│  │   ├─ audience_researcher.py
-│  │   ├─ writer.py
-│  │   ├─ visual_producer.py
-│  │   ├─ quality_editor.py
-│  │   ├─ social_manager.py
-│  │   ├─ community_manager.py
-│  │   └─ growth_analyst.py
-│  ├─ scripts/                # Utilidades
-│  │   ├─ validate_skill.py
+├─ ore-studio/
+│  ├─ SKILL.md                    # Definición / router de la skill
+│  ├─ agents/
+│  │   ├─ personas.py             # Personalidades, inspiraciones y conexiones
+│  │   ├─ interviewer.py          # Entrevista corta (máx. 5 preguntas)
+│  │   ├─ platform_playbooks.py   # Estudio por red + generador de guiones
+│  │   ├─ pipeline.py             # Orquestador que conecta a todos
+│  │   ├─ image_reference_agent.py / video_meme_agent.py / _media.py   # Media Scout
+│  │   └─ tiktok_agent.py, instagram_agent.py, social_manager.py, ...
+│  ├─ scripts/
+│  │   ├─ run_agency.py           # Ejecuta la agencia completa
 │  │   ├─ search_corpus.py
 │  │   └─ package_skill.py
-│  └─ requirements.txt        # Dependencias mínimas de Python
-├─ docs/                      # Documentación, prompts, especificaciones
-└─ README.md                  # (este archivo)
+│  └─ requirements.txt
+├─ docs/                          # Documentación, prompts, especificaciones
+└─ README.md                      # (este archivo)
 ```
 
 ---
