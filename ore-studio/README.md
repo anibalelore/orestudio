@@ -57,3 +57,4 @@ python -m ore_studio.main
 ---
 
 *Inspired by Hollywood directors, award‑winning ad agencies, and the world’s top social‑media trendsetters.*
+<!-- updated -->
