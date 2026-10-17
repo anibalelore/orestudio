@@ -1,6 +1,6 @@
 # ORE Studio – AI‑Powered Creative Agency
 
-**ORE Studio** is a self‑contained **skill** that transforms any marketing team into a virtual creative agency powered by large‑language‑model AI.  It orchestrates research, strategy, content creation, visual production, quality control, social publishing, community interaction, and data‑driven growth – all without writing a single line of code.
+**ORE Studio** is a self‑contained **skill** that turns any marketing team into a virtual creative agency powered by large‑language‑model AI.  It orchestrates audience research, strategic planning, copywriting, visual production, quality control, social publishing, community interaction, and data‑driven growth – all without writing a single line of code.
 
 ---
 
@@ -8,7 +8,7 @@
 - **Audience research** – discovers trends, personas, and market insights.
 - **Strategic planning** – builds data‑backed campaign blueprints.
 - **Copywriting & storytelling** – generates headlines, scripts, and social copy.
-- **Visual asset generation** – creates graphics, motion assets, and finds reference images & meme videos.
+- **Visual asset generation** – creates graphics, motion assets, and finds reference images & meme videos.
 - **Quality editing** – ensures brand consistency and polish.
 - **Social publishing & automation** – posts to TikTok, Instagram, monitors metrics, replies to comments.
 - **Growth analysis** – tracks KPIs, runs experiments, recommends pivots.
@@ -27,7 +27,7 @@
 | **SocialManager** | Publishes, schedules, runs ads on platforms. | Social ops at leading brands. |
 | **CommunityManager** | Engages audience, answers comments, builds loyalty. | Community leads at Twitch, Reddit. |
 | **GrowthAnalyst** | Tracks growth metrics, runs experiments, suggests pivots. | Growth hackers, analytics teams (Amplitude, Mixpanel). |
-| **ImageReferenceAgent** | Finds high‑quality reference images. | Mood‑board curators on Behance & Pinterest. |
+| **ImageReferenceAgent** | Finds high‑quality reference images. | Mood‑board curators on Behance & Pinterest. |
 | **VideoMemeAgent** | Crawls trending meme videos and downloads them. | BuzzFeed viral teams, TikTok Trend Labs. |
 | **TikTokAgent** | Pulls TikTok metrics, replies to comments, schedules posts. | TikTok creator studios, influencer agencies. |
 | **InstagramAgent** | Retrieves Instagram insights, replies to comments, schedules posts. | Instagram brand teams, social‑media experts. |
