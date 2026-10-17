@@ -42,7 +42,7 @@ Cada agente es un experto con una misión clara, inspirado en los mejores equipo
 | 2 | 🧭 **Strategist** | Diseña la estrategia, el posicionamiento, los mensajes y los KPIs | **David Ogilvy**, **Seth Godin**, **Philip Kotler** | Planners de Wieden+Kennedy y BBDO |
 | 3 | 🔍 **Audience Researcher** | Descubre quién es tu audiencia, qué quiere y qué está en tendencia | **Rand Fishkin**, **Byron Sharp**, **Clayton Christensen** (Jobs to be Done) | Equipos de Nielsen y Gartner |
 | 4 | ✍️ **Writer** | Escribe copys, guiones, titulares y CTAs que enganchan | **Eugene Schwartz**, **Joanna Wiebe**, **Ann Handley** | Copywriters publicitarios |
-| 5 | 🎨 **Visual Producer** | Crea la dirección visual, storyboards, layouts y assets | **Paula Scher**, **Dieter Rams**, **Ed Catmull** | Estudios como Pixar |
+| 5 | 🎨 **Visual Producer** | Crea motion graphics y piezas visuales, con video generado desde código | **[Remotion](https://www.remotion.dev)** | — |
 | 6 | 🛡️ **Quality Editor** | Revisa, pule y asegura coherencia de marca antes de publicar | **William Zinsser**, **Maxwell Perkins**, **Marty Neumeier** | Editores de redacción y equipos de QA |
 | 7 | 📅 **Social Manager** | Planea el calendario y adapta cada pieza a cada plataforma | **Gary Vaynerchuk**, **Mari Smith**, **Ann Handley** | Social media ops de marcas líderes |
 | 8 | 💬 **Community Manager** | Conversa con tu audiencia y construye comunidad fiel | **Kevin Kelly** (1,000 True Fans), **Jono Bacon**, **Pat Flynn** | Community leads de Twitch y Reddit |

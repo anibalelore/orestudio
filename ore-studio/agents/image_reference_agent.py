@@ -1,53 +1,93 @@
 # Image Reference Agent
 
-"""Searches for reference images and downloads them for use in video projects.
-Uses a placeholder image‑search implementation (replace with real API in production).
+"""Searches for reference images related to a topic and downloads them for use
+in video projects.
+
+Sources (free, no API key):
+  1. Openverse (Creative Commons images, commercial-use licenses by default)
+  2. Wikimedia Commons (fallback)
+
+Every downloaded file gets a ``.meta.json`` side-car with the real source URL,
+license, author and page, so attribution can be honored.
 """
 
 import os
-import urllib.request
+
+try:  # package import
+    from . import _media as m
+except ImportError:  # direct script import
+    import _media as m
+
+ALLOWED = {"image/jpeg": ".jpg", "image/png": ".png", "image/gif": ".gif", "image/webp": ".webp"}
+
 
 class ImageReferenceAgent:
-    def __init__(self, download_dir: str = "assets/images"):
+    def __init__(self, download_dir: str = "assets/images", commercial_only: bool = True):
         self.download_dir = download_dir
+        self.commercial_only = commercial_only
         os.makedirs(self.download_dir, exist_ok=True)
 
+    def _search_openverse(self, query: str, n: int) -> list[dict]:
+        url = f"https://api.openverse.org/v1/images/?q={m.quote(query)}&page_size={n * 2}"
+        if self.commercial_only:
+            url += "&license_type=commercial"
+        out = []
+        for r in m.get_json(url).get("results", []):
+            out.append({
+                "url": r["url"],
+                "license": f"CC {r.get('license', '').upper()} {r.get('license_version', '')}".strip(),
+                "author": r.get("creator"),
+                "page": r.get("foreign_landing_url"),
+                "title": r.get("title"),
+                "source": "openverse",
+            })
+        return out
+
+    def _search_wikimedia(self, query: str, n: int) -> list[dict]:
+        url = ("https://commons.wikimedia.org/w/api.php?action=query&generator=search"
+               f"&gsrsearch={m.quote(query + ' filetype:bitmap')}&gsrnamespace=6&gsrlimit={n * 2}"
+               "&prop=imageinfo&iiprop=url|mime|extmetadata&format=json")
+        pages = m.get_json(url).get("query", {}).get("pages", {})
+        out = []
+        for p in pages.values():
+            info = p["imageinfo"][0]
+            meta = info.get("extmetadata", {})
+            out.append({
+                "url": info["url"],
+                "license": meta.get("LicenseShortName", {}).get("value", "unknown"),
+                "author": meta.get("Artist", {}).get("value"),
+                "page": info.get("descriptionurl"),
+                "title": p.get("title"),
+                "source": "wikimedia",
+            })
+        return out
+
     def search_and_download(self, query: str, max_results: int = 5) -> list[str]:
-        """Searches for images matching *query* and downloads up to *max_results*.
+        """Searches images matching *query* and downloads up to *max_results*.
         Returns a list of local file paths. Each image is validated for MIME type
-        (JPEG, PNG, GIF) and minimum size (1 KB). A side‑car JSON file records the
-        source URL, assumed license (CC0 for placeholder), and download timestamp.
+        (JPEG, PNG, GIF, WebP) and minimum size (1 KB). A side-car JSON file
+        records the real source URL, license, author and download timestamp.
         """
-        # Placeholder URLs – replace with a real image‑search API in production.
-        dummy_urls = [
-            f"https://example.com/{query.replace(' ', '_')}_{i}.jpg"
-            for i in range(1, max_results + 1)
-        ]
-        downloaded = []
-        for idx, url in enumerate(dummy_urls, 1):
-            filename = os.path.join(self.download_dir, f"{query.replace(' ', '_')}_{idx}.jpg")
+        candidates: list[dict] = []
+        for search in (self._search_openverse, self._search_wikimedia):
             try:
-                with urllib.request.urlopen(url, timeout=10) as resp:
-                    mime = resp.info().get_content_type()
-                    if mime not in ("image/jpeg", "image/png", "image/gif"):
-                        raise ValueError(f"Unsupported MIME type: {mime}")
-                    content = resp.read()
-                    if len(content) < 1024:
-                        raise ValueError("Image too small (under 1 KB)")
-                    with open(filename, "wb") as f:
-                        f.write(content)
-                    # Write metadata side‑car JSON
-                    meta = {
-                        "source_url": url,
-                        "license": "CC0",
-                        "downloaded_at": __import__("datetime").datetime.utcnow().isoformat() + "Z",
-                        "mime_type": mime,
-                        "size_bytes": len(content),
-                    }
-                    meta_path = filename + ".meta.json"
-                    with open(meta_path, "w", encoding="utf-8") as mf:
-                        import json; json.dump(meta, mf, ensure_ascii=False, indent=2)
-                    downloaded.append(filename)
+                candidates += search(query, max_results)
             except Exception as e:
-                print(f"[ImageReferenceAgent] Failed to download {url}: {e}")
+                print(f"[ImageReferenceAgent] {search.__name__} failed: {e}")
+            if len(candidates) >= max_results:
+                break
+
+        downloaded = []
+        for c in candidates:
+            if len(downloaded) >= max_results:
+                break
+            base = os.path.join(self.download_dir, f"{m.slug(query)}_{len(downloaded) + 1}")
+            try:
+                path, mime, size = m.download(c["url"], base, ALLOWED, 1024)
+                m.write_meta(path, source_url=c["url"], license=c["license"], author=c["author"],
+                             source_page=c["page"], title=c["title"], source=c["source"],
+                             mime_type=mime, size_bytes=size, query=query)
+                downloaded.append(path)
+            except Exception as e:
+                print(f"[ImageReferenceAgent] Failed to download {c['url']}: {e}")
         return downloaded
