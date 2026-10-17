@@ -9,21 +9,60 @@
 - **Zero‑Code, Plug‑and‑Play** – Deploy instantly; no Angular UI or extra infrastructure required.
 
 ## Meet the Cast of Agents (Inspired by the world’s most innovative creators)
-| Agent | Role | What It Does | Inspiration |
-|-------|------|--------------|-------------|
-| **Director** | Visionary leader | Orchestrates the whole project, sets goals, and ensures quality. | Classic film directors & chief creative officers |
-| **Strategist** | Marketing mastermind | Crafts data‑backed campaign strategies. | Top‑tier ad agencies (Wieden+Kennedy, BBDO) |
-| **AudienceResearcher** | Insight hunter | Analyzes trends, personas, and market data. | Nielsen, Gartner research teams |
-| **Writer** | Storyteller | Produces persuasive copy, scripts, and headlines. | Award‑winning copywriters & content studios |
-| **VisualProducer** | Design wizard | Generates graphics, layouts, and motion assets. | Pixar visual development & design studios |
-| **QualityEditor** | Polish perfectionist | Reviews, edits, and ensures brand consistency. | Pulitzer‑level editors & QA teams |
-| **SocialManager** | Platform commander | Publishes posts, monitors KPIs, runs ads. | Social media ops at leading brands |
-| **CommunityManager** | Conversation curator | Engages audiences, answers comments, builds loyalty. | Community champions at Twitch & Reddit |
-| **GrowthAnalyst** | Data‑driven optimizer | Tracks growth metrics, runs experiments, suggests pivots. | Growth hackers & analytics squads (Amplitude, Mixpanel) |
-| **ImageReferenceAgent** | Visual scout | Finds high‑quality reference images for any concept. | Mood‑board curators on Behance & Pinterest |
-| **VideoMemeAgent** | Meme hunter | Discovers trending meme videos and downloads them for reuse. | Viral content teams at BuzzFeed & TikTok Trend Labs |
-| **TikTokAgent** | TikTok liaison | Pulls metrics, replies to comments, and (future) schedules posts. | TikTok creator studios & influencer agencies |
-| **InstagramAgent** | Instagram liaison | Retrieves insights, replies to comments, and (future) schedules posts. | Instagram brand teams & social‑media experts |
+### Agents Overview
+
+#### Director – Visionary leader
+*What it does*: Orchestrates the whole project, sets goals, and ensures quality.
+*Inspiration*: Classic film directors & chief creative officers.
+
+#### Strategist – Marketing mastermind
+*What it does*: Crafts data‑backed campaign strategies.
+*Inspiration*: Top‑tier ad agencies (Wieden+Kennedy, BBDO).
+
+#### AudienceResearcher – Insight hunter
+*What it does*: Analyzes trends, personas, and market data.
+*Inspiration*: Nielsen, Gartner research teams.
+
+#### Writer – Storyteller
+*What it does*: Produces persuasive copy, scripts, and headlines.
+*Inspiration*: Award‑winning copywriters & content studios.
+
+#### VisualProducer – Design wizard
+*What it does*: Generates graphics, layouts, and motion assets.
+*Inspiration*: Pixar visual development & design studios.
+
+#### QualityEditor – Polish perfectionist
+*What it does*: Reviews, edits, and ensures brand consistency.
+*Inspiration*: Pulitzer‑level editors & QA teams.
+
+#### SocialManager – Platform commander
+*What it does*: Publishes posts, monitors KPIs, runs ads.
+*Inspiration*: Social media ops at leading brands.
+
+#### CommunityManager – Conversation curator
+*What it does*: Engages audiences, answers comments, builds loyalty.
+*Inspiration*: Community champions at Twitch & Reddit.
+
+#### GrowthAnalyst – Data‑driven optimizer
+*What it does*: Tracks growth metrics, runs experiments, suggests pivots.
+*Inspiration*: Growth hackers & analytics squads (Amplitude, Mixpanel).
+
+#### ImageReferenceAgent – Visual scout
+*What it does*: Finds high‑quality reference images for any concept.
+*Inspiration*: Mood‑board curators on Behance & Pinterest.
+
+#### VideoMemeAgent – Meme hunter
+*What it does*: Discovers trending meme videos and downloads them for reuse.
+*Inspiration*: Viral content teams at BuzzFeed & TikTok Trend Labs.
+
+#### TikTokAgent – TikTok liaison
+*What it does*: Pulls metrics, replies to comments, and (future) schedules posts.
+*Inspiration*: TikTok creator studios & influencer agencies.
+
+#### InstagramAgent – Instagram liaison
+*What it does*: Retrieves insights, replies to comments, and (future) schedules posts.
+*Inspiration*: Instagram brand teams & social‑media experts.
+
 
 ## How It Works
 1. **Kick‑off** – The **Director** defines the brief.
