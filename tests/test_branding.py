@@ -14,6 +14,16 @@ class OrebalBrandingTests(unittest.TestCase):
         self.assertIn("name: orebal-studio", skill)
         self.assertIn("OREBAL Studio", readme)
         self.assertIn("Versión 2.0.0", readme)
+        for section in (
+            "## Instalación completa del control plane",
+            "### 3. Configurar Supabase",
+            "### 4. Configurar Telegram",
+            "### 5. Configurar Google Drive",
+            "### 6. Desplegar en Vercel",
+            "### 7. Verificación antes de producción",
+        ):
+            self.assertIn(section, readme)
+        self.assertIn("Estado actual:", readme)
         self.assertEqual(package["name"], "@orebal-studio/control-plane")
         self.assertEqual(package["version"], "2.0.0")
 

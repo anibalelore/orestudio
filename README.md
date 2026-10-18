@@ -112,7 +112,7 @@ El Writer **no escribe** para una red si su estudio no existe. El Growth Analyst
 ```bash
 # 1. Clona el proyecto
 git clone https://github.com/anibalelore/orestudio.git
-cd "OREBAL Studio"
+cd orestudio
 
 # 2. Corre la agencia (te entrevista con máximo 5 preguntas)
 python orebal-studio/scripts/run_agency.py --project mi-campana
@@ -133,6 +133,176 @@ python orebal-studio/scripts/run_agency.py --project nueva-campana --yes \
 ```
 
 > Las reglas por red social son heurísticas de trabajo: contrástalas con datos actuales de cada plataforma y con tus propias métricas. El pipeline genera la estructura, los estudios y las revisiones; el texto final lo pule el agente anfitrión (LLM).
+
+---
+
+## Instalación completa del control plane
+
+Cada instalación de OREBAL Studio pertenece a un owner distinto. El repositorio no incluye cuentas, clientes, IDs ni credenciales de Aníbal, eQatu o cualquier otro piloto.
+
+### Arquitectura
+
+```text
+Owner → bot privado de Telegram → webhook Next.js en Vercel
+                                      ↓
+                         Supabase: estado, contexto y cola
+                                      ↓
+                         Worker → agentes OREBAL Studio
+                                      ↓
+                         Google Drive: entregables versionados
+```
+
+El panel web y Telegram leen el mismo estado. El webhook registra encargos y el worker los ejecuta de forma durable; Google Drive conserva los archivos y Supabase conserva IDs, permisos, contexto, versiones y auditoría.
+
+### Requisitos
+
+- Node.js compatible con Next.js 16 y Python 3.11 o posterior.
+- Una cuenta de Telegram y un bot creado con **BotFather**.
+- Un proyecto de Supabase.
+- Una carpeta de Google Drive y credenciales OAuth 2.0 o una cuenta de servicio.
+- Una cuenta de Vercel, o un servidor equivalente capaz de alojar Next.js y ejecutar un scheduler.
+
+### 1. Instalar y probar localmente
+
+```bash
+git clone https://github.com/anibalelore/orestudio.git
+cd orestudio/apps/control-plane
+npm ci
+cp .env.example .env.local
+npm test
+npm run typecheck
+npm run build
+```
+
+En PowerShell, reemplaza el comando de copia por:
+
+```powershell
+Copy-Item .env.example .env.local
+```
+
+Para ejecutar el pipeline de agentes sin el control plane:
+
+```bash
+cd ../..
+python orebal-studio/scripts/run_agency.py --project demo
+```
+
+### 2. Variables de entorno
+
+Configura estas variables en `.env.local` para desarrollo y después en el gestor de secretos de Vercel o de tu servidor:
+
+```dotenv
+NODE_ENV=production
+OREBAL_ADAPTER_MODE=fake
+OREBAL_ORGANIZATION_ID=identificador_unico_de_tu_organizacion
+
+TELEGRAM_OWNER_ID=id_numerico_del_owner
+TELEGRAM_PRIVATE_CHAT_ID=id_numerico_del_chat_privado
+TELEGRAM_WEBHOOK_SECRET=secreto_aleatorio_de_16_o_mas_caracteres
+
+INTERNAL_WORKER_SECRET=otro_secreto_aleatorio
+
+SUPABASE_URL=https://tu-proyecto.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=service_role_solo_del_servidor
+
+DRIVE_ROOT_FOLDER_ID=id_de_la_carpeta_raiz
+
+WORKER_MAX_JOBS=5
+WORKER_DEADLINE_MS=20000
+TELEGRAM_MAX_FILE_BYTES=20971520
+```
+
+No subas `.env.local`. `SUPABASE_SERVICE_ROLE_KEY` debe permanecer exclusivamente en el servidor. Usa secretos diferentes para Telegram y el worker.
+
+### 3. Configurar Supabase
+
+1. Crea un proyecto para la instalación.
+2. Instala la CLI de Supabase e inicia sesión.
+3. Desde la raíz del repositorio, vincula el proyecto y aplica las migraciones:
+
+```bash
+supabase login
+supabase link --project-ref TU_PROJECT_REF
+supabase db push
+```
+
+La migración base está en [`supabase/migrations/202610170001_control_plane.sql`](supabase/migrations/202610170001_control_plane.sql). Crea organizaciones, owners, clientes, perfiles, proyectos, tareas, aprobaciones, auditoría y políticas de aislamiento. Prueba primero en un proyecto no productivo y conserva todos los cambios posteriores como migraciones versionadas.
+
+> Estado actual: el esquema y los adaptadores contractuales existen, pero los RPC de la cola y el mapeo completo del adaptador real todavía no están certificados contra un proyecto Supabase real. No actives producción hasta completar esa conexión.
+
+### 4. Configurar Telegram
+
+1. Crea el bot con `@BotFather` y guarda el token fuera del repositorio.
+2. Obtén el ID numérico del owner y el ID del chat privado; colócalos en `TELEGRAM_OWNER_ID` y `TELEGRAM_PRIVATE_CHAT_ID`.
+3. Despliega primero el control plane para obtener una URL HTTPS.
+4. Registra el webhook reemplazando los valores siguientes:
+
+```bash
+curl -X POST "https://api.telegram.org/botTU_BOT_TOKEN/setWebhook" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://TU_DOMINIO/api/telegram/webhook",
+    "secret_token": "TU_TELEGRAM_WEBHOOK_SECRET",
+    "allowed_updates": ["message", "callback_query"]
+  }'
+```
+
+Telegram enviará el secreto en `X-Telegram-Bot-Api-Secret-Token`. OREBAL Studio valida ese encabezado, el ID numérico del owner y que el mensaje venga del chat privado configurado.
+
+> Estado actual: el handler está probado con dobles, pero la ruta desplegada devuelve `503` hasta inicializar las dependencias reales. No registres el webhook productivo antes de completar ese wiring.
+
+### 5. Configurar Google Drive
+
+1. Crea una carpeta raíz dedicada a OREBAL Studio.
+2. Habilita Google Drive API en tu proyecto de Google Cloud.
+3. Configura OAuth 2.0 o una cuenta de servicio y comparte la carpeta con esa identidad.
+4. Copia el ID de la carpeta a `DRIVE_ROOT_FOLDER_ID`.
+5. Verifica que la identidad pueda crear carpetas, archivos y shortcuts.
+
+Si usas una cuenta de servicio, recuerda que no tiene cuota propia para ser dueña de archivos; usa una carpeta compartida apropiada o un Shared Drive compatible. El adaptador crea estructuras idempotentes por cliente y proyecto para evitar carpetas duplicadas.
+
+### 6. Desplegar en Vercel
+
+1. Importa `anibalelore/orestudio` desde Vercel.
+2. Define **Root Directory** como `apps/control-plane`.
+3. Conserva Next.js como framework detectado.
+4. Carga todas las variables anteriores en **Project Settings → Environment Variables**.
+5. Despliega y comprueba el panel antes de registrar Telegram.
+
+El archivo [`apps/control-plane/vercel.json`](apps/control-plane/vercel.json) configura un cron diario hacia `/api/internal/worker`. La frecuencia real y los límites de ejecución dependen del plan de Vercel. El endpoint del worker debe validar `INTERNAL_WORKER_SECRET` antes de procesar trabajos.
+
+> Estado actual: el build de Vercel está verificado localmente, pero el webhook y el worker exportados aún esperan inicialización real y responden `503`. El despliegue sirve para inspeccionar el panel y continuar la integración, no para afirmar operación productiva completa.
+
+### 7. Verificación antes de producción
+
+```bash
+cd apps/control-plane
+npm test
+npm run typecheck
+npm run build
+cd ../..
+python -m unittest discover -s tests -v
+```
+
+Después verifica manualmente:
+
+- Un usuario o chat de Telegram diferente debe ser rechazado.
+- Repetir el mismo `update_id` no debe crear otra tarea.
+- Un cliente no puede leer proyectos o artefactos de otro.
+- Repetir la creación de estructura Drive debe reutilizar IDs.
+- Pausar globalmente o por proyecto debe impedir efectos externos.
+- Ninguna publicación, cobro o gasto ocurre sin autorización explícita.
+
+Consulta la [guía operativa ampliada](docs/operations/connect-integrations.md) y la [matriz de capacidades y bloqueos](docs/operations/capability-status.md) antes de activar credenciales reales.
+
+### Referencias oficiales
+
+- [Telegram Bot API — webhooks y `secret_token`](https://core.telegram.org/bots/api)
+- [Supabase — migraciones y despliegue](https://supabase.com/docs/guides/deployment/database-migrations)
+- [Google Drive API](https://developers.google.com/workspace/drive/api/guides/about-sdk)
+- [Google Shared Drives](https://developers.google.com/workspace/drive/api/guides/about-shareddrives)
+- [Vercel — configuración del proyecto](https://vercel.com/docs/project-configuration/project-settings)
+- [Vercel — cron jobs](https://vercel.com/docs/cron-jobs/manage-cron-jobs)
 
 ---
 
