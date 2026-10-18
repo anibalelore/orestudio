@@ -1,0 +1,1 @@
+export default async function ProjectPage({ params }: { params: Promise<{ projectId: string }> }) { const { projectId } = await params; return <section><p className="eyebrow">PROYECTO</p><h1>{projectId}</h1><p>Estado persistido, versiones, aprobaciones, preguntas y enlaces verificados de Drive.</p></section>; }

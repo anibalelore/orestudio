@@ -1,0 +1,1 @@
+export default async function ClientPage({ params }: { params: Promise<{ clientId: string }> }) { const { clientId } = await params; return <section><p className="eyebrow">CLIENTE</p><h1>{clientId}</h1><p>Perfil de marca, proyectos, entregas y reportes se resuelven desde Supabase por este ID estable.</p></section>; }
