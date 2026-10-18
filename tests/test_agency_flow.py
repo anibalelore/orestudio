@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "ore-studio"))
 from agents.interviewer import Brief, ClientProfile, Interviewer  # noqa: E402
 from agents.personas import PLATFORM_AGENT, connections_report  # noqa: E402
 from agents.pipeline import Context, Pipeline, step_writer  # noqa: E402
+from scripts.run_agency import run_contract_request  # noqa: E402
 
 
 class InterviewerTests(unittest.TestCase):
@@ -55,6 +56,25 @@ class InterviewerTests(unittest.TestCase):
 
 
 class ConnectedPipelineTests(unittest.TestCase):
+    def test_versioned_contract_keeps_client_profile_and_studies_before_writer(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = run_contract_request({
+                "contractVersion": 1,
+                "organizationId": "org",
+                "clientId": "anibal",
+                "projectId": "pilot",
+                "profileVersionId": "profile-v2",
+                "offer": "consultoría",
+                "buyer": "fundadores",
+                "channels": ["tiktok"],
+                "outputRoot": tmp,
+            })
+        self.assertEqual(1, result["contractVersion"])
+        self.assertEqual("anibal", result["clientId"])
+        self.assertEqual("profile-v2", result["profileVersionId"])
+        kinds = [item["kind"] for item in result["artifacts"]]
+        self.assertLess(kinds.index("platform-study-tiktok"), kinds.index("writer"))
+
     def test_persona_handoffs_are_reciprocal(self):
         self.assertEqual([], connections_report())
 
