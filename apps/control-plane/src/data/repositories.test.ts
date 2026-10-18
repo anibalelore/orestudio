@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createMemoryRepositories } from "./memory-repositories";
 
-const ore = { organizationId: "org_ore" };
+const ore = { organizationId: "org_orebal" };
 const other = { organizationId: "org_other" };
 
 describe("tenant-scoped repositories", () => {

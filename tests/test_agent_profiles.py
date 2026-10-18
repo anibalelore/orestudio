@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "ore-studio"))
+sys.path.insert(0, str(ROOT / "orebal-studio"))
 from agents.personas import PERSONAS, connections_report  # noqa: E402
 
 
@@ -16,7 +16,7 @@ class OperationalProfileTests(unittest.TestCase):
                     "## Respuestas originales", "## Decisión observable"]
         for role in roles:
             self.assertIn(role, PERSONAS)
-            card = ROOT / "ore-studio" / "references" / "roles" / f"{role.replace('_', '-')}.md"
+            card = ROOT / "orebal-studio" / "references" / "roles" / f"{role.replace('_', '-')}.md"
             text = card.read_text(encoding="utf-8")
             for heading in required:
                 self.assertIn(heading, text, f"{role}: {heading}")

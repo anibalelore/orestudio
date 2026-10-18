@@ -2,7 +2,7 @@
 """package_skill.py
 
 Utility to package the ore‑studio skill into a zip archive.
-It collects the `ore-studio` directory (excluding __pycache__ and tests) and
+It collects the `orebal-studio` directory (excluding __pycache__ and tests) and
 writes a zip file to the `dist/` folder.
 """
 import os

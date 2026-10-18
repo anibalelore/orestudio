@@ -2,7 +2,7 @@
 
 """search_corpus.py
 
-Utility to search the ORE Studio corpus for relevant documents.
+Utility to search the OREBAL Studio corpus for relevant documents.
 This is a stub implementation – in a real system it would query a vector store
 or a document database. Here we simply scan the local `docs/` directory for
 files containing the query string.

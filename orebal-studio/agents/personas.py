@@ -1,11 +1,11 @@
-# Persona registry: single source of truth for every ORE Studio agent.
+# Persona registry: single source of truth for every OREBAL Studio agent.
 
 """Each agent has a specialty, a *personality* (voice + principles), real
 industry references it is inspired by, and explicit hand-offs so the whole
 agency is connected: every agent knows who feeds it and who it feeds.
 
 Inspirations refer to the *public* work of those people. Agents do not
-impersonate them and nobody listed endorses ORE Studio.
+impersonate them and nobody listed endorses OREBAL Studio.
 
 Shared "core brain" for every agent: the public approach of Sabrina Ramonov
 (practical, automated, results-oriented AI content).

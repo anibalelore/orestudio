@@ -1,8 +1,8 @@
-# ORE Studio: dirección por Telegram y operación por clientes
+# OREBAL Studio: dirección por Telegram y operación por clientes
 
 ## Propósito
 
-Añadir a ORE Studio un runtime operativo autohospedable que permita al owner de cada instalación dirigir la agencia desde un único bot privado de Telegram, mantener clientes y proyectos aislados, ejecutar trabajo durable por pasos y guardar entregables versionados en Google Drive. La skill y el equipo actuales siguen siendo la fuente de comportamiento creativo; Telegram y el panel son dos interfaces del mismo estado en Supabase.
+Añadir a OREBAL Studio un runtime operativo autohospedable que permita al owner de cada instalación dirigir la agencia desde un único bot privado de Telegram, mantener clientes y proyectos aislados, ejecutar trabajo durable por pasos y guardar entregables versionados en Google Drive. La skill y el equipo actuales siguen siendo la fuente de comportamiento creativo; Telegram y el panel son dos interfaces del mismo estado en Supabase.
 
 ## Alcance aprobado
 

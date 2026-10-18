@@ -1,6 +1,6 @@
-# Instalar y conectar ORE Studio
+# Instalar y conectar OREBAL Studio
 
-ORE Studio es autohospedable. Cada instalación representa una organización y su owner configura sus propios IDs, credenciales, base de datos y carpeta. Los nombres usados en pruebas son ejemplos, no cuentas preconfiguradas.
+OREBAL Studio es autohospedable. Cada instalación representa una organización y su owner configura sus propios IDs, credenciales, base de datos y carpeta. Los nombres usados en pruebas son ejemplos, no cuentas preconfiguradas.
 
 ## 1. Requisitos
 
@@ -12,9 +12,9 @@ Instala dependencias con `npm ci` dentro de `apps/control-plane` y copia `.env.e
 
 ## 2. Identidad de la instalación
 
-Configura `ORE_ORGANIZATION_ID` con una clave estable propia. `TELEGRAM_OWNER_ID` es el ID numérico del owner y `TELEGRAM_PRIVATE_CHAT_ID` el chat privado permitido. No uses nombres de usuario como control de acceso.
+Configura `OREBAL_ORGANIZATION_ID` con una clave estable propia. `TELEGRAM_OWNER_ID` es el ID numérico del owner y `TELEGRAM_PRIVATE_CHAT_ID` el chat privado permitido. No uses nombres de usuario como control de acceso.
 
-Genera secretos independientes para `TELEGRAM_WEBHOOK_SECRET` e `INTERNAL_WORKER_SECRET`. Mantén `ORE_ADAPTER_MODE=fake` para una prueba local sin conexiones; cambia a `real` solamente después de completar y probar cada integración.
+Genera secretos independientes para `TELEGRAM_WEBHOOK_SECRET` e `INTERNAL_WORKER_SECRET`. Mantén `OREBAL_ADAPTER_MODE=fake` para las pruebas locales. El modo `real` está reservado hasta completar el wiring del runtime y certificar los adaptadores indicados como pendientes en la matriz de capacidades.
 
 ## 3. Supabase
 
@@ -42,7 +42,7 @@ Ejecuta primero una prueba que cree y vuelva a conciliar la misma estructura. La
 
 ## 6. Vercel o servidor propio
 
-En Vercel selecciona `apps/control-plane` como **Root Directory**, carga las variables y despliega. Protege `GET /api/internal/worker` con `INTERNAL_WORKER_SECRET`; `vercel.json` programa un despertar diario conservador. Ajusta frecuencia, duración, concurrencia y presupuesto a los límites reales de tu plan.
+Cuando el wiring real esté certificado, en Vercel selecciona `apps/control-plane` como **Root Directory**, carga las variables y despliega. Protege `GET /api/internal/worker` con `INTERNAL_WORKER_SECRET`; `vercel.json` programa un despertar diario conservador. Ajusta frecuencia, duración, concurrencia y presupuesto a los límites reales de tu plan.
 
 En otro servidor, ejecuta el mismo endpoint mediante un scheduler autenticado. Una respuesta del webhook solo confirma recepción; revisa el estado durable del trabajo.
 

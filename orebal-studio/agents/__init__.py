@@ -1,4 +1,4 @@
-# Init for ore-studio agents package
+# Init for orebal-studio agents package
 from .personas import PERSONAS, PLATFORM_AGENT, connections_report
 from .interviewer import Interviewer, Brief, ClientProfile
 from .platform_playbooks import PLAYBOOKS, study_markdown, build_script

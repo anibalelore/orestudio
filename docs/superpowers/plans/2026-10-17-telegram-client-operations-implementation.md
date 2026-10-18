@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Construir el recorrido mínimo seguro y durable para dirigir ORE Studio por Telegram, operar clientes/proyectos aislados y guardar entregables versionados en Drive.
+**Goal:** Construir el recorrido mínimo seguro y durable para dirigir OREBAL Studio por Telegram, operar clientes/proyectos aislados y guardar entregables versionados en Drive.
 
 **Architecture:** Añadir una aplicación Next.js TypeScript en `apps/control-plane`; Supabase Postgres y Queues sostienen el estado y trabajo durable, mientras adaptadores aislados conectan Telegram, Drive e IA. El pipeline Python existente sigue siendo el motor creativo y se consume mediante un contrato versionado, de modo que panel y Telegram reflejen el mismo estado.
 
@@ -183,8 +183,8 @@
 - Create: `apps/control-plane/src/agents/python-runner.ts`
 - Create: `apps/control-plane/src/integrations/ai/port.ts`
 - Create: `apps/control-plane/src/integrations/transcription/port.ts`
-- Modify: `ore-studio/scripts/run_agency.py`
-- Modify: `ore-studio/agents/pipeline.py`
+- Modify: `orebal-studio/scripts/run_agency.py`
+- Modify: `orebal-studio/agents/pipeline.py`
 - Test: `apps/control-plane/src/agents/runner.test.ts`
 - Test: `tests/test_agency_flow.py`
 
@@ -244,13 +244,13 @@
 ### Task 11: Fichas completas de agentes y fuentes verificadas
 
 **Files:**
-- Modify: `ore-studio/agents/personas.py`
-- Create: `ore-studio/references/roles/operations-director.md`
-- Create: `ore-studio/references/roles/sales.md`
-- Create: `ore-studio/references/roles/onboarding.md`
-- Create: `ore-studio/references/roles/project-operations.md`
-- Create: `ore-studio/references/roles/cash-operations.md`
-- Create: `ore-studio/references/sources/operations-personas.md`
+- Modify: `orebal-studio/agents/personas.py`
+- Create: `orebal-studio/references/roles/operations-director.md`
+- Create: `orebal-studio/references/roles/sales.md`
+- Create: `orebal-studio/references/roles/onboarding.md`
+- Create: `orebal-studio/references/roles/project-operations.md`
+- Create: `orebal-studio/references/roles/cash-operations.md`
+- Create: `orebal-studio/references/sources/operations-personas.md`
 - Test: `tests/test_agent_profiles.py`
 
 **Interfaces:**
@@ -272,7 +272,7 @@
 - Create: `docs/operations/connect-integrations.md`
 - Create: `docs/operations/capability-status.md`
 - Modify: `README.md`
-- Modify: `ore-studio/SKILL.md`
+- Modify: `orebal-studio/SKILL.md`
 
 **Interfaces:**
 - Consumes: todos los contratos anteriores.

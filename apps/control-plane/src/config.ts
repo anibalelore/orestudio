@@ -6,8 +6,8 @@ const positiveInt = (fallback: number) =>
 const schema = z
   .object({
     NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
-    ORE_ADAPTER_MODE: z.enum(["fake", "real"]).default("fake"),
-    ORE_ORGANIZATION_ID: z.string().min(1),
+    OREBAL_ADAPTER_MODE: z.enum(["fake", "real"]).default("fake"),
+    OREBAL_ORGANIZATION_ID: z.string().min(1),
     TELEGRAM_OWNER_ID: z.string().regex(/^\d+$/, "TELEGRAM_OWNER_ID must be numeric"),
     TELEGRAM_PRIVATE_CHAT_ID: z.string().regex(/^-?\d+$/, "TELEGRAM_PRIVATE_CHAT_ID must be numeric"),
     TELEGRAM_WEBHOOK_SECRET: z.string().min(16),
@@ -20,7 +20,7 @@ const schema = z
     TELEGRAM_MAX_FILE_BYTES: positiveInt(20 * 1024 * 1024),
   })
   .superRefine((value, context) => {
-    if (value.ORE_ADAPTER_MODE !== "real") return;
+    if (value.OREBAL_ADAPTER_MODE !== "real") return;
     if (!value.SUPABASE_URL) {
       context.addIssue({ code: "custom", path: ["SUPABASE_URL"], message: "required for real adapters" });
     }
@@ -50,8 +50,8 @@ export function loadConfig(env: NodeJS.ProcessEnv): RuntimeConfig {
   const value = schema.parse(env);
   return {
     nodeEnv: value.NODE_ENV,
-    adapterMode: value.ORE_ADAPTER_MODE,
-    organizationId: value.ORE_ORGANIZATION_ID,
+    adapterMode: value.OREBAL_ADAPTER_MODE,
+    organizationId: value.OREBAL_ORGANIZATION_ID,
     telegramOwnerId: value.TELEGRAM_OWNER_ID,
     telegramPrivateChatId: value.TELEGRAM_PRIVATE_CHAT_ID,
     telegramWebhookSecret: value.TELEGRAM_WEBHOOK_SECRET,

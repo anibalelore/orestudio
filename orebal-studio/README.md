@@ -1,6 +1,6 @@
-# ORE Studio – AI‑Powered Creative Agency
+# OREBAL Studio – AI‑Powered Creative Agency
 
-**ORE Studio** is a self‑contained **skill** that turns any marketing team into a virtual creative agency powered by large‑language‑model AI.  It orchestrates audience research, strategic planning, copywriting, visual production, quality control, social publishing, community interaction, and data‑driven growth – all without writing a single line of code.
+**OREBAL Studio** is a self‑contained **skill** that turns any marketing team into a virtual creative agency powered by large‑language‑model AI.  It orchestrates audience research, strategic planning, copywriting, visual production, quality control, social publishing, community interaction, and data‑driven growth – all without writing a single line of code.
 
 ---
 
@@ -52,7 +52,7 @@ python -m ore_studio.main
 
 ---
 
-**ORE Studio** turns every marketing team into a lean, AI‑enhanced creative factory. Join the revolution – your audience is waiting.
+**OREBAL Studio** turns every marketing team into a lean, AI‑enhanced creative factory. Join the revolution – your audience is waiting.
 
 ---
 

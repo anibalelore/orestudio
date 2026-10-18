@@ -1,9 +1,11 @@
 ---
-name: ore-studio
+name: orebal-studio
 description: Agencia virtual de contenido, marketing y crecimiento con entrevista inicial, estudio por red social y agentes conectados.
 ---
 
-# ore-studio Skill Router
+# orebal-studio Skill Router
+
+Versión distribuible: **2.0.0**.
 
 Agencia virtual autohospedable de agentes creativos y operativos con personalidad propia, inspirados en referentes reales de cada área, que generan campañas multicanal (TikTok, Instagram, LinkedIn, YouTube, opcional Facebook). Criterio compartido inspirado en el enfoque público de **Sabrina Ramonov**.
 
@@ -32,10 +34,10 @@ Cada artefacto lleva un encabezado con el agente y sus inspiraciones, y una lín
 
 ## Cómo ejecutar
 ```bash
-python ore-studio/scripts/run_agency.py --project demo                 # con entrevista
-python ore-studio/scripts/run_agency.py --project demo --yes \
+python orebal-studio/scripts/run_agency.py --project demo                 # con entrevista
+python orebal-studio/scripts/run_agency.py --project demo --yes \
     --offer "Cursos de Excel" --buyer "contadores" --channel tiktok,linkedin
-python ore-studio/scripts/run_agency.py --project siguiente --yes \
+python orebal-studio/scripts/run_agency.py --project siguiente --yes \
     --profile output/demo/client-profile.json --channel instagram,youtube
 ```
 En código: `Interviewer().run()` → `Pipeline("demo").run(brief, fetch_media=False)`.

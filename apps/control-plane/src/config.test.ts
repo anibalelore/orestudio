@@ -3,8 +3,8 @@ import { loadConfig } from "./config";
 
 const valid: NodeJS.ProcessEnv = {
   NODE_ENV: "test",
-  ORE_ADAPTER_MODE: "fake",
-  ORE_ORGANIZATION_ID: "org_ore",
+  OREBAL_ADAPTER_MODE: "fake",
+  OREBAL_ORGANIZATION_ID: "org_orebal",
   TELEGRAM_OWNER_ID: "1234567890123",
   TELEGRAM_PRIVATE_CHAT_ID: "1234567890123",
   TELEGRAM_WEBHOOK_SECRET: "telegram_secret_1234567890",
@@ -31,8 +31,8 @@ describe("loadConfig", () => {
   it("allows local fake adapters without real provider credentials", () => {
     const config = loadConfig({
       NODE_ENV: "test",
-      ORE_ADAPTER_MODE: "fake",
-      ORE_ORGANIZATION_ID: "org_local",
+      OREBAL_ADAPTER_MODE: "fake",
+      OREBAL_ORGANIZATION_ID: "org_local",
       TELEGRAM_OWNER_ID: "42",
       TELEGRAM_PRIVATE_CHAT_ID: "42",
       TELEGRAM_WEBHOOK_SECRET: "local_webhook_secret",

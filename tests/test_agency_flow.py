@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "ore-studio"))
+sys.path.insert(0, str(ROOT / "orebal-studio"))
 
 from agents.interviewer import Brief, ClientProfile, Interviewer  # noqa: E402
 from agents.personas import PLATFORM_AGENT, connections_report  # noqa: E402
@@ -116,7 +116,7 @@ class ConnectedPipelineTests(unittest.TestCase):
             profile_path = tmp_path / "profile.json"
             profile.save(profile_path)
             result = subprocess.run(
-                [sys.executable, str(ROOT / "ore-studio" / "scripts" / "run_agency.py"),
+                [sys.executable, str(ROOT / "orebal-studio" / "scripts" / "run_agency.py"),
                  "--project", "second-campaign", "--output", str(tmp_path / "output"),
                  "--profile", str(profile_path), "--yes", "--channel", "tiktok"],
                 cwd=ROOT, capture_output=True, text=True,

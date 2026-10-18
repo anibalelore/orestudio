@@ -1,10 +1,10 @@
 """CLI: run the whole agency.
 
 Examples:
-  python ore-studio/scripts/run_agency.py --project cafe --yes \\
+  python orebal-studio/scripts/run_agency.py --project cafe --yes \\
       --offer "Café de especialidad por suscripción" \\
       --buyer "oficinistas que toman mal café" --channel tiktok,linkedin
-  python ore-studio/scripts/run_agency.py --project demo      # interview (max 5 questions)
+  python orebal-studio/scripts/run_agency.py --project demo      # interview (max 5 questions)
 """
 
 import argparse
@@ -43,7 +43,7 @@ def run_contract_request(request: dict) -> dict:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="ORE Studio agency runner")
+    ap = argparse.ArgumentParser(description="OREBAL Studio agency runner")
     ap.add_argument("--project")
     ap.add_argument("--request-json", default="")
     ap.add_argument("--output", default="output")

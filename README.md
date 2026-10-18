@@ -1,4 +1,6 @@
-# 🚀 ORE Studio — Tu agencia de marketing completa, en un solo comando
+# 🚀 OREBAL Studio — Tu agencia de marketing completa, en un solo comando
+
+**Versión 2.0.0**
 
 > **De una idea a una campaña lista para publicar en minutos.**
 > Un equipo virtual de **16 agentes con personalidad propia** que te entrevista, estudia cada red social, escribe, diseña, revisa y optimiza tu contenido para **TikTok, Instagram, LinkedIn, YouTube** (y Facebook si lo quieres).
@@ -9,9 +11,9 @@ Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú cuentas qué
 
 > **Autohospedable:** esta skill no trae un owner, clientes ni credenciales fijas. Cada persona que la instala configura su propia organización, bot, base de datos, Drive y APIs. Consulta [la guía de conexión](docs/operations/connect-integrations.md) y [el estado verificable de capacidades](docs/operations/capability-status.md).
 
-## ✨ ¿Por qué ORE Studio?
+## ✨ ¿Por qué OREBAL Studio?
 
-| Antes | Con ORE Studio |
+| Antes | Con OREBAL Studio |
 |-------|----------------|
 | Semanas coordinando estrategia, copy y diseño | Una campaña completa desde una conversación corta |
 | Formularios y reuniones con preguntas interminables | Entrevista de **máximo 5 preguntas**, con respuesta sugerida |
@@ -33,7 +35,7 @@ Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú cuentas qué
 
 Detrás de los agentes hay un **criterio compartido** inspirado en el enfoque público de **[Sabrina Ramonov](https://www.sabrina.dev)**: contenido con IA práctico, automatizado y orientado a resultados. Ese núcleo guía a todo el equipo, y cada agente suma su propia especialidad y personalidad encima.
 
-> ORE Studio se inspira en su enfoque público documentado. No es un producto oficial de Sabrina Ramonov ni se le atribuyen decisiones privadas.
+> OREBAL Studio se inspira en su enfoque público documentado. No es un producto oficial de Sabrina Ramonov ni se le atribuyen decisiones privadas.
 
 ---
 
@@ -41,7 +43,7 @@ Detrás de los agentes hay un **criterio compartido** inspirado en el enfoque p�
 
 Además del equipo creativo, la operación incorpora Dirección Operativa, Ventas, Onboarding, Operaciones de Proyecto y Operaciones de Caja. Sus fichas documentan personalidad, referentes, límites, desacuerdos y handoffs; ninguna suplanta la voz de la marca ni autoriza gastos por sí sola.
 
-Cada agente tiene **especialidad, personalidad y referentes reales** (su fuente de verdad es [`agents/personas.py`](ore-studio/agents/personas.py)).
+Cada agente tiene **especialidad, personalidad y referentes reales** (su fuente de verdad es [`agents/personas.py`](orebal-studio/agents/personas.py)).
 
 ### Entrevista y dirección
 | Agente | Qué hace por ti | Personalidad | Inspirado en |
@@ -75,7 +77,7 @@ Cada agente tiene **especialidad, personalidad y referentes reales** (su fuente 
 | 💬 **Community Manager** | Responde y construye comunidad fiel | Cálido y atento | **Kevin Kelly**, **Jono Bacon**, **Pat Flynn** |
 | 📈 **Growth Analyst** | Métricas, experimentos A/B y aprendizajes que vuelven a la estrategia | Escéptico y basado en datos | **Neil Patel**, **Sean Ellis**, **Brian Balfour**, **Avinash Kaushik** |
 
-> Son referentes de la industria que inspiran el enfoque de cada rol; no están afiliados ni respaldan ORE Studio.
+> Son referentes de la industria que inspiran el enfoque de cada rol; no están afiliados ni respaldan OREBAL Studio.
 
 ---
 
@@ -110,13 +112,13 @@ El Writer **no escribe** para una red si su estudio no existe. El Growth Analyst
 ```bash
 # 1. Clona el proyecto
 git clone https://github.com/anibalelore/orestudio.git
-cd "ORE Studio"
+cd "OREBAL Studio"
 
 # 2. Corre la agencia (te entrevista con máximo 5 preguntas)
-python ore-studio/scripts/run_agency.py --project mi-campana
+python orebal-studio/scripts/run_agency.py --project mi-campana
 
 # …o sin entrevista, directo:
-python ore-studio/scripts/run_agency.py --project cafe --yes \
+python orebal-studio/scripts/run_agency.py --project cafe --yes \
   --offer "Café de especialidad por suscripción" \
   --buyer "oficinistas" --channel tiktok,linkedin
 ```
@@ -126,7 +128,7 @@ Los resultados quedan en `output/<proyecto>/`.
 Cada ejecución guarda `client-profile.json` con el contexto reutilizable de la marca. Para iniciar otra campaña sin repetir las preguntas sobre el negocio:
 
 ```bash
-python ore-studio/scripts/run_agency.py --project nueva-campana --yes \
+python orebal-studio/scripts/run_agency.py --project nueva-campana --yes \
   --profile output/mi-proyecto/client-profile.json --channel tiktok,linkedin
 ```
 
@@ -137,8 +139,8 @@ python ore-studio/scripts/run_agency.py --project nueva-campana --yes \
 ## 🗂️ Estructura del proyecto
 
 ```
-ORE Studio/
-├─ ore-studio/
+OREBAL Studio/
+├─ orebal-studio/
 │  ├─ SKILL.md                    # Definición / router de la skill
 │  ├─ agents/
 │  │   ├─ personas.py             # Personalidades, inspiraciones y conexiones

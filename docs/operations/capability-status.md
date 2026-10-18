@@ -12,8 +12,9 @@ Estado certificado el 18 de octubre de 2026. “Sin conexión real” significa 
 | Cola, reintento, recuperación y deduplicación | Implementada y probada con doble | MemoryQueue y worker |
 | Aprobaciones, pausa y efectos idempotentes | Implementada y probada | Suites de dominio; ningún efecto real ejecutado |
 | Panel compartido y resumen | Implementada y probada localmente | Tests, typecheck y build Next.js |
-| Webhook Telegram | Implementada sin conexión real | Falta token, bot y webhook público de cada owner |
-| Persistencia y cola Supabase | Implementada sin conexión real | Falta proyecto/credenciales y prueba de migraciones en Supabase real |
+| Handler verificable de Telegram | Implementada y probada con doble | Valida secreto, owner, chat privado, deduplicación e intención |
+| Inicialización del webhook/worker desplegado | Pendiente/bloqueada | Las rutas exportadas devuelven 503 hasta conectar dependencias reales |
+| Persistencia y cola Supabase | Pendiente/bloqueada | Adaptadores prototipo; faltan RPCs de cola, mapeo real, proyecto/credenciales y prueba de migraciones |
 | Google Drive | Implementada sin conexión real | Falta OAuth/service account, carpeta y prueba de permisos |
 | Pipeline Python desde worker TypeScript | Implementada y probada localmente | Contrato JSON v1; proveedor IA real no configurado |
 | Transcripción/IA externa | Pendiente/bloqueada | Cada instalación debe elegir proveedor, credencial y límites |
