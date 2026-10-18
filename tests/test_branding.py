@@ -14,6 +14,17 @@ class OrebalBrandingTests(unittest.TestCase):
         self.assertIn("name: orebal-studio", skill)
         self.assertIn("OREBAL Studio", readme)
         self.assertIn("Versión 2.0.0", readme)
+        self.assertIn("21 agentes", readme)
+        self.assertIn("## Novedades de OREBAL Studio 2.0", readme)
+        self.assertIn("## Instalación rápida", readme)
+        for improvement in (
+            "Entrevista con máximo 5 preguntas",
+            "Estudio obligatorio por red social",
+            "Operación durable",
+            "Aprobaciones seguras",
+            "Configuración por owner",
+        ):
+            self.assertIn(improvement, readme)
         for section in (
             "## Instalación completa del control plane",
             "### 3. Configurar Supabase",

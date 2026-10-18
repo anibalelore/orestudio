@@ -3,13 +3,63 @@
 **Versión 2.0.0**
 
 > **De una idea a una campaña lista para publicar en minutos.**
-> Un equipo virtual de **16 agentes con personalidad propia** que te entrevista, estudia cada red social, escribe, diseña, revisa y optimiza tu contenido para **TikTok, Instagram, LinkedIn, YouTube** (y Facebook si lo quieres).
+> Un equipo virtual de **21 agentes con personalidad propia** que te entrevista, estudia cada red social, escribe, diseña, revisa, opera y optimiza tu contenido para **TikTok, Instagram, LinkedIn, YouTube** (y Facebook si lo quieres).
 
 Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú cuentas qué quieres lograr; tu agencia hace el resto.
 
 ---
 
 > **Autohospedable:** esta skill no trae un owner, clientes ni credenciales fijas. Cada persona que la instala configura su propia organización, bot, base de datos, Drive y APIs. Consulta [la guía de conexión](docs/operations/connect-integrations.md) y [el estado verificable de capacidades](docs/operations/capability-status.md).
+
+## Novedades de OREBAL Studio 2.0
+
+- **Entrevista con máximo 5 preguntas:** el Interviewer recupera contexto previo, propone respuestas y evita interrogatorios infinitos.
+- **Perfil reutilizable por cliente:** la marca, oferta, audiencia, voz y restricciones se versionan para no empezar desde cero en cada campaña.
+- **Estudio obligatorio por red social:** TikTok, Instagram, LinkedIn, YouTube y Facebook tienen estratega, comportamiento, formatos, ganchos, CTA y métricas propios antes de escribir un guion.
+- **21 agentes con personalidad y referentes:** incorpora Dirección Operativa, Ventas, Onboarding, Operaciones de Proyecto y Operaciones de Caja al equipo creativo existente.
+- **Handoffs conectados:** cada agente declara de quién recibe, a quién entrega y qué significa “terminado”. El análisis de resultados vuelve a estrategia y escritura.
+- **Contexto por organización, cliente y proyecto:** evita mezclar marcas, archivos, conversaciones o campañas.
+- **Telegram privado y seguro:** valida secreto del webhook, ID numérico del owner, chat privado, callbacks opacos y `update_id` repetidos.
+- **Operación durable:** trabajos en cola con reserva, reintentos, recuperación de ejecuciones abandonadas, backoff y estado de atención manual.
+- **Aprobaciones seguras:** tokens de un solo uso, caducidad, validación de owner/proyecto/versión y rechazo de aprobaciones ambiguas.
+- **Pausa y control de efectos externos:** una pausa global o por proyecto se vuelve a comprobar antes de publicar, cobrar, gastar o enviar.
+- **Google Drive idempotente:** estructura estándar por cliente/proyecto, IDs persistidos, versiones `v001`, `v002` y shortcuts sin duplicar archivos.
+- **Supabase multi-tenant:** esquema para owners, clientes, perfiles, proyectos, tareas, artefactos, aprobaciones, auditoría, notificaciones y costos.
+- **Panel Next.js compartido:** vistas de clientes, proyectos, estado y resúmenes sobre la misma fuente de verdad que Telegram.
+- **Configuración por owner:** cada instalación usa sus propias credenciales, organización, bot, base de datos, Drive, proveedores y límites.
+- **Estado honesto de integraciones:** la documentación separa lo probado localmente, lo implementado sin conexión real y lo pendiente por credenciales o wiring.
+
+## Instalación rápida
+
+### Solo la skill y el pipeline local
+
+```bash
+git clone https://github.com/anibalelore/orestudio.git
+cd orestudio
+python orebal-studio/scripts/run_agency.py --project demo
+```
+
+Para una ejecución sin entrevista:
+
+```bash
+python orebal-studio/scripts/run_agency.py --project demo --yes \
+  --offer "Tu oferta" --buyer "Tu comprador" \
+  --channel tiktok,instagram,linkedin,youtube
+```
+
+### Control plane local
+
+```bash
+cd apps/control-plane
+npm ci
+cp .env.example .env.local
+npm test
+npm run dev
+```
+
+En PowerShell usa `Copy-Item .env.example .env.local`. Después completa las variables de `.env.local`. Para Telegram + Supabase + Drive + Vercel, sigue la sección [Instalación completa del control plane](#instalación-completa-del-control-plane).
+
+> La skill y el pipeline Python funcionan localmente. El control plane compila y sus contratos están probados, pero el webhook y el worker desplegados todavía requieren inicializar las dependencias reales antes de usarlos en producción.
 
 ## ✨ ¿Por qué OREBAL Studio?
 
