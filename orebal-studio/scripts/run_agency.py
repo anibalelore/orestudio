@@ -4,7 +4,7 @@ Examples:
   python orebal-studio/scripts/run_agency.py --project cafe --yes \\
       --offer "Café de especialidad por suscripción" \\
       --buyer "oficinistas que toman mal café" --channel tiktok,linkedin
-  python orebal-studio/scripts/run_agency.py --project demo      # interview (max 5 questions)
+  python orebal-studio/scripts/run_agency.py --project demo      # 6 initial questions; optional follow-ups need consent
 """
 
 import argparse

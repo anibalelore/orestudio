@@ -40,7 +40,7 @@ PERSONAS: dict[str, Persona] = {p.key: p for p in [
     _P("interviewer", "Interviewer", "🎙️",
        "Entrevista breve para entender qué busca el cliente: objetivo, oferta, comprador y canales",
        "Curioso y directo. Una pregunta a la vez, con una opción recomendada para responder 'ok'.",
-       ("Máximo 5 preguntas en total: nunca un interrogatorio infinito.",
+       ("Máximo 6 preguntas iniciales; cualquier profundización adicional requiere consentimiento.",
         "Pregunta por hechos y comportamientos reales, no por opiniones ni hipótesis.",
         "Lo que falta se asume de forma explícita y se marca para que el cliente lo corrija.",
         "Cierra con un resumen de 5 líneas y pide un solo 'sí' para avanzar."),

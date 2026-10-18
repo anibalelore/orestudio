@@ -9,16 +9,53 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "orebal-studio"))
 
-from agents.interviewer import Brief, ClientProfile, Interviewer  # noqa: E402
+from agents.interviewer import MAX_QUESTIONS, Brief, ClientProfile, Interviewer  # noqa: E402
 from agents.personas import PLATFORM_AGENT, connections_report  # noqa: E402
 from agents.pipeline import Context, Pipeline, step_writer  # noqa: E402
 from scripts.run_agency import run_contract_request  # noqa: E402
 
 
 class InterviewerTests(unittest.TestCase):
+    def test_default_interview_has_six_initial_questions_and_can_advance(self):
+        self.assertEqual(6, MAX_QUESTIONS)
+        answers = iter([
+            "quiero lanzar una academia",
+            "cursos de automatización",
+            "dueños de negocio",
+            "autoridad",
+            "linkedin",
+            "experto",
+            "avanzar",
+        ])
+        interviewer = Interviewer()
+
+        brief = interviewer.run(ask=lambda _prompt: next(answers), say=lambda _message: None)
+
+        self.assertEqual(6, len(interviewer.asked))
+        self.assertEqual("", brief.pain)
+
+    def test_optional_follow_up_requires_consent(self):
+        answers = iter([
+            "quiero lanzar una academia",
+            "cursos de automatización",
+            "dueños de negocio",
+            "autoridad",
+            "linkedin",
+            "experto",
+            "sí",
+            "pierden horas en tareas repetitivas",
+            "avanzar",
+        ])
+        interviewer = Interviewer()
+
+        brief = interviewer.run(ask=lambda _prompt: next(answers), say=lambda _message: None)
+
+        self.assertEqual(7, len(interviewer.asked))
+        self.assertEqual("pierden horas en tareas repetitivas", brief.pain)
+
     def test_interview_never_exceeds_question_budget(self):
         interviewer = Interviewer(max_questions=3)
-        answers = iter(["una academia", "dueños de negocio", "autoridad"])
+        answers = iter(["una academia", "dueños de negocio", "autoridad", "avanzar"])
 
         interviewer.run(ask=lambda _prompt: next(answers), say=lambda _message: None)
 

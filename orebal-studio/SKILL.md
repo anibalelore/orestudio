@@ -18,7 +18,7 @@ La fuente de verdad de personalidades, inspiraciones y conexiones es `agents/per
 - **Con `--project <ID>`**: carga el contexto de un proyecto existente.
 
 ## Flujo (todo conectado por un contexto compartido)
-1. **Interviewer** — entrevista breve. **Máximo 5 preguntas en total, incluida la apertura**, cada una con una opción recomendada ("ok" la acepta). Lo que falta se asume y se marca. Entrega un `brief.md`, guarda `client-profile.json` para futuras campañas y pide un solo "sí".
+1. **Interviewer** — entrevista breve. **Máximo 6 preguntas iniciales, incluida la apertura**, cada una con una opción recomendada ("ok" la acepta). Si aún falta información importante, propone una profundización a la vez explicando por qué; solo la pregunta si el usuario acepta y siempre permite **avanzar**. Lo omitido se convierte en supuestos visibles. Entrega un `brief.md`, guarda `client-profile.json` para futuras campañas y pide un solo "sí".
 2. **Director** — valida el brief, reparte encargos y define qué es "terminado".
 3. **Strategist** y **Audience Researcher** — idea central, pilares, KPI, dolores y lenguaje del comprador.
 4. **Estudio por red** — cada Platform Strategist (TikTok, Instagram, LinkedIn, YouTube, Facebook) produce su `platform-study-<red>.md` con comportamiento de la audiencia, formato, ganchos, estructura, reglas, CTA, cadencia y métricas.
@@ -43,7 +43,7 @@ python orebal-studio/scripts/run_agency.py --project siguiente --yes \
 En código: `Interviewer().run()` → `Pipeline("demo").run(brief, fetch_media=False)`.
 
 ## Reglas para el agente anfitrión (LLM)
-- Respeta el límite de preguntas del Interviewer; no hagas más rondas de preguntas.
+- Respeta las 6 preguntas iniciales del Interviewer. Las profundizaciones posteriores se ofrecen una por una, requieren consentimiento y siempre permiten avanzar.
 - Nunca escribas un guion sin leer antes el estudio de esa red.
 - Cada agente habla con su voz definida en `personas.py`; no suplantes a las personas inspiradoras ni les atribuyas decisiones privadas.
 - Las reglas por red son heurísticas: contrástalas con datos actuales y con las métricas del cliente.

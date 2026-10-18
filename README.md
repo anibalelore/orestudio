@@ -13,7 +13,7 @@ Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú cuentas qué
 
 ## Novedades de OREBAL Studio 2.0
 
-- **Entrevista con máximo 5 preguntas:** el Interviewer recupera contexto previo, propone respuestas y evita interrogatorios infinitos.
+- **Entrevista con máximo 6 preguntas iniciales:** el Interviewer recupera contexto previo y evita interrogatorios infinitos. Si detecta vacíos importantes, propone profundizaciones una por una; el usuario puede aceptarlas o avanzar con supuestos visibles.
 - **Perfil reutilizable por cliente:** la marca, oferta, audiencia, voz y restricciones se versionan para no empezar desde cero en cada campaña.
 - **Estudio obligatorio por red social:** TikTok, Instagram, LinkedIn, YouTube y Facebook tienen estratega, comportamiento, formatos, ganchos, CTA y métricas propios antes de escribir un guion.
 - **21 agentes con personalidad y referentes:** incorpora Dirección Operativa, Ventas, Onboarding, Operaciones de Proyecto y Operaciones de Caja al equipo creativo existente.
@@ -66,7 +66,7 @@ En PowerShell usa `Copy-Item .env.example .env.local`. Después completa las var
 | Antes | Con OREBAL Studio |
 |-------|----------------|
 | Semanas coordinando estrategia, copy y diseño | Una campaña completa desde una conversación corta |
-| Formularios y reuniones con preguntas interminables | Entrevista de **máximo 5 preguntas**, con respuesta sugerida |
+| Formularios y reuniones con preguntas interminables | **Máximo 6 preguntas iniciales**; cualquier profundización adicional requiere permiso |
 | El mismo guion pegado en todas las redes | **Un estudio por red social** antes de cada guion |
 | Equipos que no se hablan entre sí | Agentes **conectados**: cada uno sabe quién le entrega y a quién entrega |
 | Publicar "a ver qué pasa" | Decisiones guiadas por audiencia y métricas, con ciclo de mejora |
@@ -98,7 +98,7 @@ Cada agente tiene **especialidad, personalidad y referentes reales** (su fuente 
 ### Entrevista y dirección
 | Agente | Qué hace por ti | Personalidad | Inspirado en |
 |--------|-----------------|--------------|--------------|
-| 🎙️ **Interviewer** | Entiende qué buscas, tus objetivos y tu comprador **sin interrogatorios**: máx. 5 preguntas | Curioso y directo; una pregunta a la vez con opción recomendada | **Rob Fitzpatrick** (The Mom Test), **Michael Bungay Stanier**, **Simon Sinek**, **Bob Moesta** |
+| 🎙️ **Interviewer** | Entiende qué buscas, tus objetivos y tu comprador: máx. 6 preguntas iniciales; sugiere preguntas extra solo con permiso | Curioso y directo; una pregunta a la vez con opción de avanzar | **Rob Fitzpatrick** (The Mom Test), **Michael Bungay Stanier**, **Simon Sinek**, **Bob Moesta** |
 | 🎬 **Director** | Lidera, define la visión y los criterios de "terminado" | Sereno y decidido | **Steve Jobs**, **Christopher Nolan**, **Lee Clow** |
 | 🧭 **Strategist** | Idea central, pilares y KPI | Claro y provocador | **David Ogilvy**, **Seth Godin**, **Philip Kotler** |
 | 🔍 **Audience Researcher** | Dolores, lenguaje real y mentalidad por red | Observador y empírico | **Rand Fishkin**, **Byron Sharp**, **Clayton Christensen** |
@@ -164,7 +164,7 @@ El Writer **no escribe** para una red si su estudio no existe. El Growth Analyst
 git clone https://github.com/anibalelore/orestudio.git
 cd orestudio
 
-# 2. Corre la agencia (te entrevista con máximo 5 preguntas)
+# 2. Corre la agencia (máximo 6 preguntas iniciales; extras solo con permiso)
 python orebal-studio/scripts/run_agency.py --project mi-campana
 
 # …o sin entrevista, directo:
@@ -364,7 +364,7 @@ OREBAL Studio/
 │  ├─ SKILL.md                    # Definición / router de la skill
 │  ├─ agents/
 │  │   ├─ personas.py             # Personalidades, inspiraciones y conexiones
-│  │   ├─ interviewer.py          # Entrevista corta (máx. 5 preguntas)
+│  │   ├─ interviewer.py          # 6 preguntas iniciales; extras con consentimiento
 │  │   ├─ platform_playbooks.py   # Estudio por red + generador de guiones
 │  │   ├─ pipeline.py             # Orquestador que conecta a todos
 │  │   ├─ image_reference_agent.py / video_meme_agent.py / _media.py   # Media Scout

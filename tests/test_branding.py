@@ -18,7 +18,7 @@ class OrebalBrandingTests(unittest.TestCase):
         self.assertIn("## Novedades de OREBAL Studio 2.0", readme)
         self.assertIn("## Instalación rápida", readme)
         for improvement in (
-            "Entrevista con máximo 5 preguntas",
+            "Entrevista con máximo 6 preguntas iniciales",
             "Estudio obligatorio por red social",
             "Operación durable",
             "Aprobaciones seguras",

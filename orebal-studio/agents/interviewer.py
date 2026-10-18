@@ -4,7 +4,8 @@
 WITHOUT endless questions.
 
 How it avoids endless questions:
-  * hard cap on the number of questions (``MAX_QUESTIONS``, default 5);
+  * six initial questions at most (``MAX_QUESTIONS`` includes the opening);
+  * optional diagnostic questions are proposed one at a time and require consent;
   * questions are asked in order of impact and only for what is still missing;
   * every question offers a recommended default ("ok" accepts it);
   * anything still unknown is filled with an explicit, flagged assumption;
@@ -22,7 +23,8 @@ try:
 except ImportError:
     from personas import get
 
-MAX_QUESTIONS = 5
+MAX_QUESTIONS = 6
+MAX_OPTIONAL_FOLLOW_UPS = 3
 ALL_CHANNELS = ["tiktok", "instagram", "linkedin", "youtube", "facebook"]
 DEFAULT_CHANNELS = ["tiktok", "instagram", "linkedin", "youtube"]
 
@@ -62,6 +64,17 @@ QUESTIONS = [
              ", ".join(DEFAULT_CHANNELS), "Cada red tiene su propio estudio y guion."),
     Question("tone", "¿Qué tono prefieres? (cercano / experto / divertido / premium)",
              "cercano", "Define la voz de todos los agentes."),
+]
+
+OPTIONAL_QUESTIONS = [
+    Question("pain", "¿Cuál es el problema más urgente que vive hoy ese comprador?", "",
+             "Permite escribir ganchos específicos en vez de generalidades."),
+    Question("proof", "¿Qué prueba, caso o diferencial respalda la oferta?", "",
+             "Evita afirmaciones sin respaldo y fortalece la credibilidad."),
+    Question("constraints", "¿Hay algo que no debamos prometer, mencionar o publicar?", "",
+             "Reduce riesgo de marca, legal y operativo."),
+    Question("brand_name", "¿Cuál es el nombre exacto de la marca o negocio?", "",
+             "Mantiene consistencia en todos los entregables."),
 ]
 
 
@@ -181,10 +194,15 @@ class Interviewer:
         pending = [q for q in QUESTIONS if q.field not in self.answers and q.field not in self.asked]
         return pending[:max(0, remaining)]
 
+    def suggested_follow_up(self) -> Question | None:
+        """Return one useful optional question; asking it still requires user consent."""
+        return next((q for q in OPTIONAL_QUESTIONS
+                     if q.field not in self.answers and q.field not in self.asked), None)
+
     def answer(self, field_name: str, value: str) -> None:
         self.asked.append(field_name)
         value = (value or "").strip()
-        q = next((q for q in QUESTIONS if q.field == field_name), None)
+        q = next((q for q in QUESTIONS + OPTIONAL_QUESTIONS if q.field == field_name), None)
         if not value or value.lower() in {"ok", "si", "sí", "default", "lo que recomiendes"}:
             value = q.default if q else ""
         if field_name == "channels":
@@ -218,13 +236,19 @@ class Interviewer:
         b.pain = a.get("pain", "")
         b.proof = a.get("proof", "")
         b.constraints = a.get("constraints", "")
+        if not b.pain:
+            assumptions.append("Problema urgente no confirmado; los ganchos usarán el contexto disponible.")
+        if not b.proof:
+            assumptions.append("No se declaró prueba o diferencial; no se inventarán afirmaciones.")
+        if not b.constraints:
+            assumptions.append("No se declararon restricciones adicionales de marca o publicación.")
         b.assumptions = assumptions
         missing_core = sum(1 for k in ("offer", "buyer", "objective", "channels") if k not in a)
         b.confidence = round(max(0.3, 1 - 0.15 * missing_core - 0.05 * len(assumptions)), 2)
         return b
 
     def run(self, opening: str = "", ask=input, say=print) -> Brief:
-        """Interactive session, never exceeds ``max_questions``."""
+        """Run the initial interview, then offer consent-based diagnostic follow-ups."""
         p = get("interviewer")
         say(f"{p.emoji} {p.name}: {p.voice}")
         if opening:
@@ -235,6 +259,17 @@ class Interviewer:
         for q in self.next_questions():
             hint = f" [{q.default}]" if q.default else ""
             self.answer(q.field, ask(f"{q.text}{hint}: "))
+        for _ in range(MAX_OPTIONAL_FOLLOW_UPS):
+            q = self.suggested_follow_up()
+            if not q:
+                break
+            consent = ask(
+                f"Puedo hacer una pregunta adicional porque {q.why.lower()} "
+                "¿Quieres responderla? (sí / avanzar): "
+            ).strip().lower()
+            if consent not in {"si", "sí", "s", "yes"}:
+                break
+            self.answer(q.field, ask(f"{q.text}: "))
         brief = self.build_brief()
         say("\n" + brief.to_markdown())
         return brief

@@ -4,7 +4,7 @@ Estado certificado el 18 de octubre de 2026. “Sin conexión real” significa 
 
 | Capacidad | Estado | Evidencia o bloqueo |
 |---|---|---|
-| Entrevista de máximo 5 preguntas y perfil reutilizable | Implementada y probada | Suite Python `test_agency_flow` |
+| Entrevista de máximo 6 preguntas iniciales, extras consentidas y perfil reutilizable | Implementada y probada | Suite Python `test_agency_flow` |
 | Estudio específico por red antes del guion | Implementada y probada | Suite Python y contrato del runner |
 | Personalidades y handoffs recíprocos | Implementada y probada | `test_agent_profiles` |
 | Configuración por owner/organización | Implementada y probada | Validación de entorno y pruebas de autorización |
