@@ -2,16 +2,16 @@
 
 ## Propósito
 
-Añadir a ORE Studio un runtime operativo que permita a Aníbal Orellana dirigir la agencia desde un único bot privado de Telegram, mantener clientes y proyectos aislados, ejecutar trabajo durable por pasos y guardar entregables versionados en Google Drive. La skill y el equipo actuales siguen siendo la fuente de comportamiento creativo; Telegram y el panel son dos interfaces del mismo estado en Supabase.
+Añadir a ORE Studio un runtime operativo autohospedable que permita al owner de cada instalación dirigir la agencia desde un único bot privado de Telegram, mantener clientes y proyectos aislados, ejecutar trabajo durable por pasos y guardar entregables versionados en Google Drive. La skill y el equipo actuales siguen siendo la fuente de comportamiento creativo; Telegram y el panel son dos interfaces del mismo estado en Supabase.
 
 ## Alcance aprobado
 
-- Único director humano: Aníbal, autorizado por ID numérico de Telegram y chat privado.
+- Un único director humano por instalación, autorizado por su ID numérico de Telegram y chat privado configurados.
 - Telegram como canal principal; sin WhatsApp ni autoservicio de clientes.
 - Vercel aloja Next.js, webhook, panel y consumidor acotado.
 - Supabase conserva permisos, contexto, decisiones, cola, pasos, versiones y auditoría.
 - Google Drive conserva archivos; se guardan IDs, no se infiere identidad por nombres.
-- Piloto 1: Aníbal Elore. Piloto 2: eQatu solo tras un encargo posterior explícito.
+- Aníbal Elore y eQatu son fixtures de aceptación; ninguna identidad o cliente queda preconfigurado al distribuir la skill.
 - El runtime preserva la oficina visual, el pipeline, las personalidades, referentes y voz de marca actuales.
 - Acciones externas, publicación, cobro, gasto o compromisos exigen autorización aplicable.
 

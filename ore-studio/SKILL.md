@@ -5,7 +5,9 @@ description: Agencia virtual de contenido, marketing y crecimiento con entrevist
 
 # ore-studio Skill Router
 
-Agencia virtual de **16 agentes con personalidad propia**, inspirados en referentes reales de cada área, que generan campañas multicanal (TikTok, Instagram, LinkedIn, YouTube, opcional Facebook). Criterio compartido inspirado en el enfoque público de **Sabrina Ramonov**.
+Agencia virtual autohospedable de agentes creativos y operativos con personalidad propia, inspirados en referentes reales de cada área, que generan campañas multicanal (TikTok, Instagram, LinkedIn, YouTube, opcional Facebook). Criterio compartido inspirado en el enfoque público de **Sabrina Ramonov**.
+
+Cada instalación pertenece a su propio owner: configura organización, Telegram, Supabase, Drive y proveedores mediante variables de entorno. Nunca asumas que nombres de pilotos, IDs o credenciales del repositorio representan al instalador. Guía: `../docs/operations/connect-integrations.md`; estado: `../docs/operations/capability-status.md`.
 
 La fuente de verdad de personalidades, inspiraciones y conexiones es `agents/personas.py`.
 
@@ -24,6 +26,7 @@ La fuente de verdad de personalidades, inspiraciones y conexiones es `agents/per
 8. **Quality Editor** — revisa cada pieza contra las reglas de su red.
 9. **Social Manager** → **Community Manager** → **Growth Analyst** — calendario, respuestas y métricas.
 10. **Growth Analyst** devuelve aprendizajes al **Strategist** y al **Writer** (ciclo de mejora).
+11. **Operations Director** coordina **Sales**, **Onboarding**, **Project Operations** y **Cash Operations**, y devuelve decisiones al Director sin autorizar publicaciones, cobros ni gastos por sí solo. Sus fichas completas están en `references/roles/`.
 
 Cada artefacto lleva un encabezado con el agente y sus inspiraciones, y una línea con su voz. El `checkpoint.md` lista quién entregó qué a quién.
 

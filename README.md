@@ -7,6 +7,8 @@ Sin freelancers. Sin reuniones eternas. Sin empezar desde cero. Tú cuentas qué
 
 ---
 
+> **Autohospedable:** esta skill no trae un owner, clientes ni credenciales fijas. Cada persona que la instala configura su propia organización, bot, base de datos, Drive y APIs. Consulta [la guía de conexión](docs/operations/connect-integrations.md) y [el estado verificable de capacidades](docs/operations/capability-status.md).
+
 ## ✨ ¿Por qué ORE Studio?
 
 | Antes | Con ORE Studio |
@@ -36,6 +38,8 @@ Detrás de los agentes hay un **criterio compartido** inspirado en el enfoque p�
 ---
 
 ## 🤖 Conoce a tu equipo
+
+Además del equipo creativo, la operación incorpora Dirección Operativa, Ventas, Onboarding, Operaciones de Proyecto y Operaciones de Caja. Sus fichas documentan personalidad, referentes, límites, desacuerdos y handoffs; ninguna suplanta la voz de la marca ni autoriza gastos por sí sola.
 
 Cada agente tiene **especialidad, personalidad y referentes reales** (su fuente de verdad es [`agents/personas.py`](ore-studio/agents/personas.py)).
 
